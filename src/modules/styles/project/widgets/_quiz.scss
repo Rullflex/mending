@@ -233,56 +233,204 @@
         font-size: 0.9375rem;
     }
     &__final {
-        &-title {
-            font-family: Raleway;
-            font-weight: bold;
-            font-size: 1.5rem;
-            line-height: 1.75rem;
-            text-align: center;
-            margin-top: 5rem;
-            margin-bottom: 0.5rem;
-        }
-        &-subtitle {
-            width: 15.625rem;
-            font-weight: 500;
-            font-size: 1.25rem;
-            line-height: 1.05em;
-            text-align: center;
-            margin: 0 auto 1.1875rem;
-        }
         &-input {
+            padding-left: 4.5rem;
             width: 100%;
-            height: 3.375rem;
-            text-align: center;
-            font-size: 1.125rem;
-            margin-bottom: 19px;
+            height: 3.75rem;
+            font-size: 1rem;
+            margin-top: 4.5rem;
+            margin-bottom: 0.8125rem;
         }
         &-submit {
-            line-height: 3.3125rem;
-            font-size: 1.125rem;
+            line-height: 3.75rem;
+            font-size: 1rem;
             width: 100%;
+        }
+        &-agr {
+            width: 14.8125rem;
+            font-size: 0.875rem;
+            line-height: 1.11em;
+            color: #A2A2A2;
+            margin-top: 0.5625rem;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 }
 
+@media (min-width: map-get($grid-breakpoints, md)) {
+    .quiz { 
+        &__ibg {
+            display: block;
+        }
+        &__main {}
+        &__subtitle {
+            margin-bottom: 1.5rem;
+            width: 25rem;
+        }
+        &__progress {
+            margin-bottom: 1rem;
+            &-title {
+                font-size: 0.875rem;
+                margin-bottom: 0.5rem;
+                margin-left: 0.4rem;
+                text-align: left;
+            }
+            &-nav {
+                &.disabled {}
+            }
+        }
+        &__btns {
+            width: 34.375rem;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 3.75rem;
+            button {
+                width: 16.4375rem;
+                line-height: 4rem;
+                font-size: 1.125rem;
+                border-radius: 3.125rem;
+                &:active {
+                }
+                &:hover {
+                }
+            }
+        }
+        &-slide {
+            &-wrap {
+                // width: 100%;
+                min-height: unset;
+                height: 27rem;
+            }
+            &-final {
+                
+                padding-left: 28.125rem;
+            }
+            &.quiz-active {}
+            h3 {
+                width: 41.875rem;
+                font-size: 2.5rem;
+                text-align: left;
+            }
+        }
+        &__radio {
+            &-wrap {
+                width: 50rem;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            $self: &;
+            width: 22.6875rem;
+            height: 4rem;
+            line-height: 4rem;
+            padding-left: 1.375rem;
+            cursor: pointer;
+    
+            margin-bottom: 1.0625rem;
+            margin-right: 1.0625rem;
+            &-toggler {
+                width: 1.5625rem;
+                height: 1.5625rem;
+                margin-right: 1rem;
+                &--inner {
+                    width: 0.9375rem;
+                    height: 0.9375rem;
+                }
+            }
+            &-value {
+                span {
+                }
+            }
+            &--sm {
+                #{$self + -value} {
+                    font-size: 1.1875rem;
+                }
+            }
+            transition: $transition--fast;
+            &:hover {
+                border-color: $primary;
+                box-shadow: 2px 2px 4px rgba($primary, 0.3);
+            }
+            &.quiz-active {
+                #{$self + -toggler} {
+                }
+                #{$self + -toggler--inner} {
+                }
+            }
+
+        }
+        &__input {
+            &-wrap {
+                .quiz__radio-toggler {
+                    left: 1.4rem;
+                }
+                &:hover {
+                    .quiz__input {
+                        border-color: $primary;
+                        box-shadow: 2px 2px 4px rgba($primary, 0.3);
+                    }
+                    
+                }
+                &.quiz-active {
+                    .quiz__input {
+                    }
+                    .quiz__radio-toggler {
+                    }
+                    .quiz__radio-toggler--inner {
+                    }
+                }
+            }
+            width: 46.5rem;
+            height: 4rem;
+            padding-left: 5.9375rem;
+            font-size: 1.25rem;
+        }
+        &__final {
+            &-title {
+                width: 26.875rem;
+                font-size: 2.5rem;
+                line-height: 1.05em;
+                text-align: left;
+                margin-top: 4rem;
+                margin-bottom: 1.25rem;
+            }
+            &-subtitle {
+                width: unset;
+                font-weight: normal;
+                font-size: 1.875rem;
+                text-align: left;
+                margin: 0 0 1.1875rem;
+            }
+            &-input {
+                width: 19.5625rem;
+                height: 4rem;
+                text-align: left;
+                font-size: 1.25rem;
+                margin-bottom: 1.875rem;
+                padding-left: 2.375rem;  
+            }
+            &-submit {
+                line-height: 4rem;
+                font-size: 1.125rem;
+                width: 19.5625rem;
+            }
+        }
+    }
+    
+}
 @media (min-width: map-get($grid-breakpoints, lg)) {
     .quiz {
         &__img {
             
-            &-dim {
-                width: 27.375rem;
-                left: 0;
-                top: 5.5rem;
-            }
-            &-tel {
-                width: 24rem;
-                position: absolute;
-                left: -2.1rem;
-                top: 3.25rem;
-            }
         }
         
-        &__main {}
+        &__main {
+            width: 920px;
+            height: 545px;
+            filter: drop-shadow(4.00505px 4.00505px 10.0126px rgba(78, 78, 78, 0.3));
+            border-radius: 15px;
+            overflow: hidden;
+        }
         &__subtitle {
             margin-bottom: 1.5rem;
             width: 25rem;

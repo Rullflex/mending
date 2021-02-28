@@ -72,6 +72,11 @@ mixin quiz-radio(text, value = null)
 		.quiz__radio-toggler
 			.quiz__radio-toggler--inner
 		p.quiz__radio-value!= text
+mixin quiz-radio-final(text, value = null)
+	a.quiz__radio.quiz-radio-final(data-value=`${value == null ? text : value}`)&attributes(attributes)
+		.quiz__radio-toggler
+			.quiz__radio-toggler--inner
+		p.quiz__radio-value!= text
 
 mixin quiz-option(text, value = null)
 	a.quiz__radio.quiz-option(data-value=`${value == null ? text : value}`)&attributes(attributes)
@@ -80,14 +85,14 @@ mixin quiz-option(text, value = null)
 		p.quiz__radio-value!= text
 
 mixin quiz-nav(count)
-	nav.quiz__nav
-		.quiz__progress.quiz-final-hide
+	nav.quiz__nav.quiz-final-hide
+		.quiz__progress
 			.quiz__progress-title Шаг #[span.quiz-progress-num 1] #[=lang[62][1]] #[= count]
 			ul.quiz__progress-nav.quiz-progress-nav.uk-dotnav.slidedots.slidedots
 				- for(var i = 1; i <= count; i++)
 					li(class=`${i == 1 ? 'uk-active' : ''}`)
 						a
-		.quiz__btns.quiz-final-hide
+		.quiz__btns
 			button.quiz-btn-prev.uk-button.btn-outline-primary.d-none.d-md-flex
 				span Предыдущий шаг
 			button.quiz-btn-next.uk-button.btn-solid-primary

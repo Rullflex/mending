@@ -7,6 +7,14 @@ document.addEventListener(`DOMContentLoaded`, function () {
     const app = new App()
     app.init()
 
+    // FORM
+    const form = new Form()
+    form.init()
+    form.phoneMask('.quiz-slide .input-wrap')
+    
+
+    document.querySelector(`.header__drop-btn`).addEventListener('click', () => UIkit.dropdown(`.header__drop`).hide(0))
+
 
 
     const quiz = new Quiz({
@@ -14,28 +22,8 @@ document.addEventListener(`DOMContentLoaded`, function () {
     })
     quiz.create()
     
-    
 
-    UIkit.slideshow(`.s5__slideshow`, {
-        autoplay: false,
-        animation: 'push',
-        draggable: false,
-        ratio: false
-    })
-    document.querySelectorAll(`.s5__slideshow-navitem`).forEach( (elem, idx, parent) => {
-        elem.addEventListener(`click`, (event) => {
-            event.preventDefault()
-            document.querySelector(`.s5__slideshow-navitem.active`).classList.remove(`active`)
-            event.currentTarget.classList.add(`active`)
-            document.querySelector(`.s5 h2.d-md-none`).textContent = event.currentTarget.textContent
-            document.querySelectorAll(`.s5__slideshow-navitem`).forEach( (elem, idx) => {
-                if (elem.classList.contains(`active`)) {
-                    UIkit.slideshow(`.s5__slideshow`).show(idx)
-                }
-            })
 
-        })
-    })
     if (window.innerWidth < app.md) {
 
     } else if (window.innerWidth >= app.md && window.innerWidth < app.lg) {
@@ -44,51 +32,9 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
     }
     if (window.innerWidth < app.md) {
-        UIkit.slider(`.s5__slider-nav`, {
-            autoplay: false,
-            draggable: false
-        })
-        
-        document.querySelectorAll(`.s5__slider-prev`).forEach( (elem, idx) => {
-            elem.addEventListener(`click`, (event) => {
-                event.preventDefault()
-                const target = event.currentTarget
-                const set = target.closest(`.s5__slider-nav`).querySelectorAll(`.s5__slider-listitem`)
-                const index = app.indexOfElements(
-                    target.closest(`.s5__slider-nav`).querySelector(`.s5__slider-listitem.active`), 
-                    set
-                )
-                UIkit.slider(target.closest(`.s5__slider-nav`)).show(index - 1)
-                UIkit.slider(target.closest(`.s5__slideshow-item`).querySelector(`.s5__slider`)).show(index - 1)
-                if (index > 0) {
-                    app.changeActivitySet(set, index - 1)
-                } else {
-                    app.changeActivitySet(set, set.length - 1)
-                }
-            })
-        })
+       
 
-        document.querySelectorAll(`.s5__slider-next`).forEach( (elem, idx) => {
-            elem.addEventListener(`click`, (event) => {
-                event.preventDefault()
-                const target = event.currentTarget
-                const set = target.closest(`.s5__slider-nav`).querySelectorAll(`.s5__slider-listitem`)
-                const index = app.indexOfElements(
-                    target.closest(`.s5__slider-nav`).querySelector(`.s5__slider-listitem.active`), 
-                    set
-                )
-                UIkit.slider(target.closest(`.s5__slider-nav`)).show(index + 1)
-                UIkit.slider(target.closest(`.s5__slideshow-item`).querySelector(`.s5__slider`)).show(index + 1)
-                if (index < set.length - 1) {
-                    app.changeActivitySet(set, index + 1)
-                } else {
-                    app.changeActivitySet(set, 0)
-                }
-            })
-        })
-
-        //S7
-        UIkit.slideshow(`.s7__slideshow`, {
+        UIkit.slideshow(`.s5__slideshow`, {
             autoplay: false,
             draggable: true,
             ratio: false
@@ -99,33 +45,22 @@ document.addEventListener(`DOMContentLoaded`, function () {
         })
     }
     else {
-        document.querySelectorAll(`.s5__slider-listitem`).forEach( (elem, idx) => {
-            elem.addEventListener(`click`, event => {
-                event.preventDefault()
-                const target = event.currentTarget
-                const set = target.closest(`.s5__slider-nav`).querySelectorAll(`.s5__slider-listitem`)
-                const index = app.indexOfElements(target, set)
-                UIkit.slider(target.closest(`.s5__slideshow-item`).querySelector(`.s5__slider`)).show(index)
-                app.changeActivitySet(set, index)
-            })
-        })
 
-        //S7
-        UIkit.slideshow(`.s7__slideshow`, {
+        UIkit.slideshow(`.s5__slideshow`, {
             autoplay: false,
             animation: 'push',
             draggable: false,
             ratio: false
         })
-        document.querySelectorAll(`.s7__slideshow-navitem`).forEach( (elem, idx, parent) => {
+        document.querySelectorAll(`.s5__slideshow-navitem`).forEach( (elem, idx, parent) => {
             
             elem.addEventListener(`click`, (event) => {
                 event.preventDefault()
-                document.querySelector(`.s7__slideshow-navitem.active`).classList.remove(`active`)
+                document.querySelector(`.s5__slideshow-navitem.active`).classList.remove(`active`)
                 event.currentTarget.classList.add(`active`)
-                document.querySelectorAll(`.s7__slideshow-navitem`).forEach( (elem, idx) => {
+                document.querySelectorAll(`.s5__slideshow-navitem`).forEach( (elem, idx) => {
                     if (elem.classList.contains(`active`)) {
-                        UIkit.slideshow(`.s7__slideshow`).show(idx)
+                        UIkit.slideshow(`.s5__slideshow`).show(idx)
                     }
                 })
     

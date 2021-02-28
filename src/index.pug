@@ -8,7 +8,7 @@ block content
 	main.main
 		section.s1
 			.ibg.s1__ibg
-				+picture(png, `${assets}s1-bg`, 'sml')
+				+picture(jpg, `${assets}s1-bg`, 'sml')
 			.container.s1__container
 				h1.s1__title #[span.text-primary Ремонт «Под Ключ»]#[br.d-lg-none] без срыва сроков с гарантией
 				.s1__benefit-price от 1000 грн м#[sup 2]
@@ -71,15 +71,18 @@ block content
 							
 		section.s3#quiz
 			.ibg.s3__ibg
-				+picture(png, `${assets}s3-bg`, 'n')
+				+picture(jpg, `${assets}s3-bg`, 'n')
 			.container 
-				h2.s3__title Узнайте точный расчет ремонта, ответив на&nbsp;4&nbsp;вопроса 
+				h2.s3__title Узнайте точный расчет ремонта, ответив на&nbsp;4 вопроса 
+				p.s3__subtitle.d-none.d-lg-block и получите -50% на химчистку и клининг
 				.s3__promise 
+					span.d-none.d-lg-block Пройдя тест, Вы  получите приятный подарок
 					+picture(pbg, `${assets}s3-ico`, 'n')
-					p #[span.text-primary получите скидку 50%] на химчистку и клининг
+					p.d-lg-none #[span.text-primary получите скидку 50%] на&nbsp;химчистку и клининг
+					p.d-none.d-lg-block Скидка на&nbsp;химчистку и&nbsp;клининг
 				.quiz__main 
 					.quiz__ibg.ibg
-						+picture(jpg, `${assets}qbg`, 'ml')(class="quiz__img-bg")
+						+picture(jpg, `${assets}s3-qbg`, 'ml')(class="quiz__img-bg")
 					.quiz-slide-wrap
 						.quiz-slide.quiz-active(data-title='Помещение')
 							h3 В каком помещении хотите сделать ремонт?
@@ -127,17 +130,24 @@ block content
 									.quiz__radio-toggler
 										.quiz__radio-toggler--inner
 									input.quiz__input.input(type="text" name="Свой вариант" placeholder="Может что-то ещё? Мы поможем :)")
-						.quiz-slide(data-title='Доп. услуги')
+						.quiz-slide.quiz-slide-final(data-title='Доп. услуги')
 							h3 Как вам удобно получить результат?
 							.quiz-radio-wrap.quiz__radio-wrap
-								+quiz-radio('Напишите мне в WhatsApp')(class="quiz__radio--lg")
-								+quiz-radio('Отправьте сообщение в Telegram')(class="quiz__radio--lg quiz-active")
-								+quiz-radio('Перезвоните по телефону')(class="quiz__radio--lg")
-						+quiz-slide-final()
+								+quiz-radio-final('Напишите мне в WhatsApp')(class="quiz__radio--lg")
+								+quiz-radio-final('Отправьте сообщение в Telegram')(class="quiz__radio--lg quiz-active")
+								+quiz-radio-final('Перезвоните по телефону')(class="quiz__radio--lg")
+								form(action="#")
+									.input-wrap
+										input.quiz__final-input.input(type="tel" name="Телефон" placeholder="Номер телефона")
+									button.quiz__final-submit.uk-button.btn-solid-primary(type="submit") Получить результат
+									p.quiz__final-agr Нажимая на кнопку, я соглашаюсь с политикой конфиденциальности
+									.values.d-none
+						.quiz-slide
+							span готово
 					+quiz-nav(4)
 		section.s4 
 			.container 
-				h2.s4__title Работаем #[span.text-primary  с 2010 года Более 3500 помещений] получили новый облик
+				h2.s4__title Работаем #[span.text-primary  с 2010 года#[br] Более 3500 помещений] получили новый облик
 				.s4__slider(data-uk-slider)
 					.uk-slider-container 
 						ul.s4__slider-items.uk-slider-items 
@@ -149,134 +159,83 @@ block content
 						a.s4__slider-prev(href="#" data-uk-slider-item="previous")
 						ul.slidedots.uk-slider-nav.uk-dotnav.d-lg-none
 						a.s4__slider-next(href="#" data-uk-slider-item="next")
-		section.s4
-			.s4__ibg.ibg
-				+picture(jpg, `${assets}s4-bg`, 'sml')
-			.container
-				h2.s4__title Подберите #[span.text-primary идеальный] потолок под #[span.text-primary свой бюджет]#[br.d-lg-none] ответив на 4 вопроса
-				p.s4__subtitle по итогу Вы:
-				ul.s4__list 
-					
-					li.s4__list-item.s4__list-item--first 
-						+icon('ok', primary)
-						span Подбрете лучший потолок для своей комнаты и&nbsp;бюджета 
-					li.s4__list-item 
-						+icon('ok', primary)
-						span + установим люстру в&nbsp;подарок
-				a.s4__btn.uk-button.btn-yellow(href="#quiz" data-uk-toggle) Подобрать потолок
-				+picture(png, `${assets}s4-lamp`, 'sm')(class=`s4__img-lamp`)
 		section.s5
+			.s5__ibg.ibg
+				+picture(jpg, `${assets}s5-bg`, 'sml')
 			.container 
+				h2.s5__title Ремонт не сложный, но&nbsp;ответственный процесс
+				p.s5__subtitle многолетний опыт работы в&nbsp;нескольких слайдах
 				.s5__widget 
 					-
 						var list = [
 							{
-								title: 'Виды потолка',
-								set: ['Глянцевый', 'Фотопечать', 'Сатиновый', 'Матовый', 'Облачное небо', 'Звёздное небо']
+								title: 'Материалы',
+								set: [
+									'Подберём или посоветуем материалы, в качестве которых уверены.', 
+									'За 10 лет работы составили список материалов, качество которых действительно хорошее.',
+									'Не всегда качество соответствует заявленному производителем. Мы же это качество проверяем на практике. И готовы поделиться с Вами этим опытом.',
+									'Оградим Вас от перерасхода материала. Заложим в смету ровно столько, сколько требуется для ремонта.'
+								]
 							},
 							{
-								title: 'Тип потолка',
-								set: ['Парящие потолки', 'Двухуровневые', 'Трёхуровневые']
+								title: 'Перепланировка',
+								set: [
+									'— Можно ли сделать проём в несущей стене?', 
+									'— Можно! Только нужно соблюдать правила по укремлению проёма. И мы знаем как это правильно сделать и узаконить.',
+									'Из 3500 наших проектов 1200 прошли стадию перепланировки. В 95% случаях, мы знаем, как сделать для Вас удобное и рациональное пространство.'
+								]
 							},
 							{
-								title: 'Освещение',
-								set: ['Световые линии', 'Точечные светильники', 'Люстры', 'Светодиодная лента', 'Лампы']
+								title: 'Электрика',
+								set: [
+									'Сколько розеток и выключателей должно быть в доме? ', 
+									'Это определяем с вами на этапе создания проекта, когда планируем где будет стоять мебель и оборудование.',
+								]
+							},
+							{
+								title: 'Канализация<br> и водоснабжение',
+								set: [
+									'Канализационный стояк которого не слышно...?', 
+									'Да, такое бывает и мы можем это сделать.',
+								]
+							},
+							{
+								title: 'Строительные<br> и ремонтные работы',
+								set: [
+									'Как сэкономить на стяжке пола и возведении стен?<br> Знаем как действительно экономить на черновых этапах работы.', 
+									'Учитываем все технические нюансы материалов. Если штукатурке нужно высохнуть и набрать прочность в течении суток - значит она будет сохнуть в течение суток.',
+								]
 							}
 						]
-					h2.d-md-none= list[0].title
 					.s5__slideshow
 						ul.s5__slideshow-items.uk-slideshow-items
 							each item, idx in list
 								li.s5__slideshow-item
-									h2.d-none.d-md-block= item.title
-									.s5__slider(data-uk-slider="draggable: false")
-										ul.s5__slider-items.uk-slider-items 
-											each picture, picIdx in item.set
-												li
-													.s5__slider-image.ibg 
-														+picture(jpg, `${assets}s5-set${idx+1}-i${picIdx+1}`, 'n')
-									.s5__slider-nav
-										.s5__slider-nav-container.uk-slider-container
-											ul.s5__slider-list.uk-slider-items 
-												each point, pointIdx in item.set 
-													li.s5__slider-listitem(class=`${pointIdx == 0 ? 'active' : ''}`)= point
-										a.s5__slider-prev(href="#")
-										a.s5__slider-next(href="#")
-						nav.s5__slideshow-nav
-							each item, idx in list
-								a.s5__slideshow-navitem(href="#" class=`${idx == 0 ? 'active' : ''}`)
-									span(data-text=item.title)!= item.title
-		
-		section.s7
-			.s7__ibg.ibg
-				+picture(jpg, `${assets}s7-bg`, 'sml')
-			.container 
-				.s7__widget 
-					-
-						var list = [
-							{
-								title: 'Подготовка помещения',
-								set: [
-									'Освобождаем периметр помещения от мебели', 
-									'Укрываем стены и мебель защитной плёнкой',
-									'Подготавливаем инструменты к работе'
-								]
-							},
-							{
-								title: 'Установка каркаса',
-								set: [
-									'Освобождаем периметр помещения от мебели', 
-									'Укрываем стены и мебель защитной плёнкой',
-									'Подготавливаем инструменты к работе'
-								]
-							},
-							{
-								title: 'Электропроводка',
-								set: [
-									'Освобождаем периметр помещения от мебели', 
-									'Укрываем стены и мебель защитной плёнкой',
-									'Подготавливаем инструменты к работе'
-								]
-							},
-							{
-								title: 'Монтаж потолка',
-								set: [
-									'Освобождаем периметр помещения от мебели', 
-									'Укрываем стены и мебель защитной плёнкой',
-									'Подготавливаем инструменты к работе'
-								]
-							}
-						]
-					.s7__slideshow
-						ul.s7__slideshow-items.uk-slideshow-items
-							each item, idx in list
-								li.s7__slideshow-item
-									.s7__slideshow-title Этапы работы
-									.s7__slideshow-subtitle= item.title
-									.s7__slideshow-image.ibg 
-										+picture(jpg, `${assets}s7-i1`, 'sl')
-									ul.s7__slideshow-list
-										each point, pIdx in item.set
-											li.s7__slideshow-listitem
-												span= pIdx + 1
-												p!= point
-						ul.s7__dots.d-md-none.uk-slideshow-nav.uk-dotnav.slidedots
-					nav.s7__slideshow-nav.d-none.d-md-flex
+									.s5__slideshow-image.ibg 
+										+picture(jpg, `${assets}s5-i${idx + 1}`, 'sl')
+									if idx == 0
+										.s5__slideshow-title Знаем, какие материалы служат долго и надёжно
+									else
+										.s5__slideshow-title!= item.title
+									each point, pIdx in item.set
+										p(class=`${idx == 0 && pIdx == 0 ? 'first' : ''}${idx == 0 && pIdx == 1 ? 'second' : ''}`)!= point
+						ul.s5__dots.d-md-none.uk-slideshow-nav.uk-dotnav.slidedots
+					nav.s5__slideshow-nav.d-none.d-md-flex
 						each item, idx in list
-							a.s7__slideshow-navitem(href="#" class=`${idx == 0 ? 'active' : ''}`)
+							a.s5__slideshow-navitem(href="#" class=`${idx == 0 ? 'active' : ''}`)
 								span(data-text=item.title)!= item.title
-		section.s8 
+		section.s6 
 			.container 
-				h2.s8__title Выезд замерщика бесплатно
-				p.s8__subtitle 60% клиентов обращаются к нам по рекомендации
-				+picture(jpg, `${assets}s8-i`, 'n')(class=`s8__img-man`)
-				.s8__bl 
-					p.s8__bl-name Здравствуйте, я Андрей Юрченко
-					p.s8__bl-descr Специалист по расчёту стоимости и установке натяжных потолков
-				.s8__txt 
-					p #[b Бесплатно расчитаю для Вас] полную стоимость установки потолка
-					p #[b Проконсультирую по интересующим вопросам.]#[br] Подскажу по выбору материала.#[br.d-lg-none] Как сделать уютную, светлую комату и при этом сэкономить
-					p У нас нету скрытых платежей.#[br] #[b Цена не поменяется#[br.d-lg-none] после окончания работы]
+				h2.s6__title Бесплатная консультация по стоимости и срокам
+				+picture(jpg, `${assets}s6-man`, 'n')(class=`s6__img-man`)
+				.s6__bl 
+					p.s6__bl-name Борис Васюченко
+					p.s6__bl-descr менеджер
+				.s6__bf Здравствуйте, я менеджер по работе с клиентами
+				.s6__txt 
+					p В мои обязанности входит #[b ответить на все Ваши вопросы.]
+					p Рассказать #[b из чего складывается стоимость] ремонта.
+					p #[b Рассчитать] ориентировочную #[b стоимость] и #[b сообщить сроки] реализации ремонта.
 		section.s9
 			.container 
 				.s9__ctn
@@ -334,7 +293,7 @@ block content
 									+picture(jpg, `${assets}s11-i3`, 'n')
 								p.s11__slider-name Андрей
 								p.s11__slider-pos установщик
-					ul.s7__dots.d-md-none.uk-slider-nav.uk-dotnav.slidedots.slidedots--white
+					ul.s5__dots.d-md-none.uk-slider-nav.uk-dotnav.slidedots.slidedots--white
 								
 		section.s12 
 			.container 
