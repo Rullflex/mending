@@ -1,0 +1,385 @@
+extends modules/layout/_layout
+
+prepend head
+	title= lang.title
+	meta(name="description", content=lang.description)
+
+block content
+	main.main
+		section.s1
+			.ibg.s1__ibg
+				+picture(png, `${assets}s1-bg`, 'sml')
+			.container.s1__container
+				h1.s1__title #[span.text-primary Ремонт «Под Ключ»]#[br.d-lg-none] без срыва сроков с гарантией
+				.s1__benefit-price от 1000 грн м#[sup 2]
+				.s1__items
+					-
+						var list = [
+							'Бесплатный выезд Инженера-замерщика для составления сметы',
+							'Минимальные сроки без нарушения технологии работы',
+							'Поэтапная оплата<br> по договору'
+						]
+					each item, idx in list
+						.s1__item(class=`s1__item-${idx + 1}`)
+							img.s1__item-img(src=`${assets}s1-ico${idx + 1}.png` alt="")
+							.s1__item-txt!= item
+				.s1__block
+					p.s1__block-title.d-md-none Консультация#[br] по срокам и стоимости 
+					p.s1__block-title.d-none.d-md-block Консультация по стоимости и&nbsp;срокам проведения ремонта
+					a.uk-button.btn-yellow.s1__block-btn(href="#rig" data-uk-toggle="") Узнать стоимость ремонта
+					p.s1__block-subtitle Ответим на все вопросы#[br] Подскажем, как сэкономить до 15% на материалах#[br] Расскажем об этапах проведения ремонта
+
+				+picture-min(png, `${assets}s1-man`, `${assets}s1-man`, 'sml')(class="s1-img-man")
+				a.s1__play.play-video(href="#v-about" data-uk-toggle="")
+					+icon('playbtn')
+					.play-video__helper.play-video__helper--expanded= lang[9]
+
+		section.s2
+			.container.s2__container
+				.s2__items
+					.s2__item.s2__item-1
+						span 10 #[b лет]
+						br
+						p строим дома#[br] и делаем ремонт
+					.s2__item.s2__item-2
+						span 3500
+						br
+						p выполненных#[br] работ
+					.s2__item.s2__item-3
+						span #[b за] 2-3 #[b дня]
+						br
+						p косметический#[br] ремонт
+					.s2__item.s2__item-4
+						span 36
+						br
+						p профессионалов#[br] в штате
+				.s2__set
+					-
+						var list = [
+							'Косметический ремонт',
+							'Капитальный ремонт',
+							'Дизайнерский ремонт',
+							'Строительство',
+							'Ванные и санузлы',
+							'Балконы',
+						]
+					each item, idx in list
+						.s2__set-item(class=`s2__set-item-${idx + 1}`)
+							.s2__set-ibg.ibg 
+								+picture(jpg, `${assets}s2-i${idx + 1}`, 'n')
+								p.s2__set-title= item
+							
+		section.s3#quiz
+			.ibg.s3__ibg
+				+picture(png, `${assets}s3-bg`, 'n')
+			.container 
+				h2.s3__title Узнайте точный расчет ремонта, ответив на&nbsp;4&nbsp;вопроса 
+				.s3__promise 
+					+picture(pbg, `${assets}s3-ico`, 'n')
+					p #[span.text-primary получите скидку 50%] на химчистку и клининг
+				.quiz__main 
+					.quiz__ibg.ibg
+						+picture(jpg, `${assets}qbg`, 'ml')(class="quiz__img-bg")
+					.quiz-slide-wrap
+						.quiz-slide.quiz-active(data-title='Помещение')
+							h3 В каком помещении хотите сделать ремонт?
+							.quiz-radio-wrap.quiz__radio-wrap
+								+quiz-radio('Новостройка')
+								+quiz-radio('Вторичное жильё')(class="quiz-active")
+								+quiz-radio('Частный дом')
+								+quiz-radio('Коммерческое помещение')
+								.quiz__input-wrap.quiz-input-as-radio.input-wrap(data-value=``)
+									.quiz__radio-toggler
+										.quiz__radio-toggler--inner
+									input.quiz__input.input(type="text" name="Другое помещение" placeholder="У вас другое помещение? Напишите какое")
+						.quiz-slide(data-title='Какой ремонт')
+							h3 Какой ремонт хотите сделать?
+							.quiz-radio-wrap.quiz__radio-wrap
+								+quiz-radio('Косметический ремонт')
+								+quiz-radio('Хочу дизайнерский ремонт')
+								+quiz-radio('Капитальный ремонт')(class="quiz-active")
+								.quiz__input-wrap.quiz-input-as-radio.input-wrap(data-value=``)
+									.quiz__radio-toggler
+										.quiz__radio-toggler--inner
+									input.quiz__input.input(type="text" name="Свое пожелание" placeholder="Или напишите свои пожелания")
+						.quiz-slide(data-title='Площадь')
+							h3 Какой примерно площади помещения, в&nbsp;которых будет ремонт?
+							.quiz-radio-wrap.quiz__radio-wrap
+								+quiz-radio('0 - 10 м<sup>2</sup>', '0 - 10 м2')
+								+quiz-radio('10 - 30 м<sup>2</sup>', '10 - 30 м2')(class="quiz-active")
+								+quiz-radio('30 - 50 м<sup>2</sup>', '30 - 50 м2')
+								+quiz-radio('50 - 100 м<sup>2</sup>', '50 - 100 м2')
+								+quiz-radio('более 100 м<sup>2</sup>', 'больше 100 м2')
+								//- .quiz__input-wrap.quiz-input.input-wrap(data-value=``)
+								//- 	.quiz__radio-toggler
+								//- 		.quiz__radio-toggler--inner
+								//- 	input.quiz__input.input(type="text" name="Площадь" placeholder="Точная площадь комнаты")
+						.quiz-slide(data-title='Доп. услуги')
+							h3 Вам нужны дополнительные услуги?
+							p.quiz__subtitle Можно выбрать несколько вариантов
+							.quiz-radio-wrap.quiz__radio-wrap
+								+quiz-option('Перепланировка и согласование')(class="quiz__radio--sm")
+								+quiz-option('Инженерные проекты')(class="quiz__radio--sm")
+								+quiz-option('Приёмка квартиры от застройщика')(class="quiz__radio--sm quiz-active")
+								+quiz-option('Консультация с дизайнером')(class="quiz__radio--sm")
+								+quiz-option('Пока не знаю / не нужны')(class="quiz__radio--sm")
+								.quiz__input-wrap.quiz-input.input-wrap(data-value=``)
+									.quiz__radio-toggler
+										.quiz__radio-toggler--inner
+									input.quiz__input.input(type="text" name="Свой вариант" placeholder="Может что-то ещё? Мы поможем :)")
+						.quiz-slide(data-title='Доп. услуги')
+							h3 Как вам удобно получить результат?
+							.quiz-radio-wrap.quiz__radio-wrap
+								+quiz-radio('Напишите мне в WhatsApp')(class="quiz__radio--lg")
+								+quiz-radio('Отправьте сообщение в Telegram')(class="quiz__radio--lg quiz-active")
+								+quiz-radio('Перезвоните по телефону')(class="quiz__radio--lg")
+						+quiz-slide-final()
+					+quiz-nav(4)
+		section.s4 
+			.container 
+				h2.s4__title Работаем #[span.text-primary  с 2010 года Более 3500 помещений] получили новый облик
+				.s4__slider(data-uk-slider)
+					.uk-slider-container 
+						ul.s4__slider-items.uk-slider-items 
+							- for(var i = 1; i <= 5; i++)
+								li.s4__slider-item 
+									.s4__slider-image.ibg 
+										+picture(jpg, `${assets}s4-i${i}`, 'sl')
+					nav.s4__slider-nav
+						a.s4__slider-prev(href="#" data-uk-slider-item="previous")
+						ul.slidedots.uk-slider-nav.uk-dotnav.d-lg-none
+						a.s4__slider-next(href="#" data-uk-slider-item="next")
+		section.s4
+			.s4__ibg.ibg
+				+picture(jpg, `${assets}s4-bg`, 'sml')
+			.container
+				h2.s4__title Подберите #[span.text-primary идеальный] потолок под #[span.text-primary свой бюджет]#[br.d-lg-none] ответив на 4 вопроса
+				p.s4__subtitle по итогу Вы:
+				ul.s4__list 
+					
+					li.s4__list-item.s4__list-item--first 
+						+icon('ok', primary)
+						span Подбрете лучший потолок для своей комнаты и&nbsp;бюджета 
+					li.s4__list-item 
+						+icon('ok', primary)
+						span + установим люстру в&nbsp;подарок
+				a.s4__btn.uk-button.btn-yellow(href="#quiz" data-uk-toggle) Подобрать потолок
+				+picture(png, `${assets}s4-lamp`, 'sm')(class=`s4__img-lamp`)
+		section.s5
+			.container 
+				.s5__widget 
+					-
+						var list = [
+							{
+								title: 'Виды потолка',
+								set: ['Глянцевый', 'Фотопечать', 'Сатиновый', 'Матовый', 'Облачное небо', 'Звёздное небо']
+							},
+							{
+								title: 'Тип потолка',
+								set: ['Парящие потолки', 'Двухуровневые', 'Трёхуровневые']
+							},
+							{
+								title: 'Освещение',
+								set: ['Световые линии', 'Точечные светильники', 'Люстры', 'Светодиодная лента', 'Лампы']
+							}
+						]
+					h2.d-md-none= list[0].title
+					.s5__slideshow
+						ul.s5__slideshow-items.uk-slideshow-items
+							each item, idx in list
+								li.s5__slideshow-item
+									h2.d-none.d-md-block= item.title
+									.s5__slider(data-uk-slider="draggable: false")
+										ul.s5__slider-items.uk-slider-items 
+											each picture, picIdx in item.set
+												li
+													.s5__slider-image.ibg 
+														+picture(jpg, `${assets}s5-set${idx+1}-i${picIdx+1}`, 'n')
+									.s5__slider-nav
+										.s5__slider-nav-container.uk-slider-container
+											ul.s5__slider-list.uk-slider-items 
+												each point, pointIdx in item.set 
+													li.s5__slider-listitem(class=`${pointIdx == 0 ? 'active' : ''}`)= point
+										a.s5__slider-prev(href="#")
+										a.s5__slider-next(href="#")
+						nav.s5__slideshow-nav
+							each item, idx in list
+								a.s5__slideshow-navitem(href="#" class=`${idx == 0 ? 'active' : ''}`)
+									span(data-text=item.title)!= item.title
+		
+		section.s7
+			.s7__ibg.ibg
+				+picture(jpg, `${assets}s7-bg`, 'sml')
+			.container 
+				.s7__widget 
+					-
+						var list = [
+							{
+								title: 'Подготовка помещения',
+								set: [
+									'Освобождаем периметр помещения от мебели', 
+									'Укрываем стены и мебель защитной плёнкой',
+									'Подготавливаем инструменты к работе'
+								]
+							},
+							{
+								title: 'Установка каркаса',
+								set: [
+									'Освобождаем периметр помещения от мебели', 
+									'Укрываем стены и мебель защитной плёнкой',
+									'Подготавливаем инструменты к работе'
+								]
+							},
+							{
+								title: 'Электропроводка',
+								set: [
+									'Освобождаем периметр помещения от мебели', 
+									'Укрываем стены и мебель защитной плёнкой',
+									'Подготавливаем инструменты к работе'
+								]
+							},
+							{
+								title: 'Монтаж потолка',
+								set: [
+									'Освобождаем периметр помещения от мебели', 
+									'Укрываем стены и мебель защитной плёнкой',
+									'Подготавливаем инструменты к работе'
+								]
+							}
+						]
+					.s7__slideshow
+						ul.s7__slideshow-items.uk-slideshow-items
+							each item, idx in list
+								li.s7__slideshow-item
+									.s7__slideshow-title Этапы работы
+									.s7__slideshow-subtitle= item.title
+									.s7__slideshow-image.ibg 
+										+picture(jpg, `${assets}s7-i1`, 'sl')
+									ul.s7__slideshow-list
+										each point, pIdx in item.set
+											li.s7__slideshow-listitem
+												span= pIdx + 1
+												p!= point
+						ul.s7__dots.d-md-none.uk-slideshow-nav.uk-dotnav.slidedots
+					nav.s7__slideshow-nav.d-none.d-md-flex
+						each item, idx in list
+							a.s7__slideshow-navitem(href="#" class=`${idx == 0 ? 'active' : ''}`)
+								span(data-text=item.title)!= item.title
+		section.s8 
+			.container 
+				h2.s8__title Выезд замерщика бесплатно
+				p.s8__subtitle 60% клиентов обращаются к нам по рекомендации
+				+picture(jpg, `${assets}s8-i`, 'n')(class=`s8__img-man`)
+				.s8__bl 
+					p.s8__bl-name Здравствуйте, я Андрей Юрченко
+					p.s8__bl-descr Специалист по расчёту стоимости и установке натяжных потолков
+				.s8__txt 
+					p #[b Бесплатно расчитаю для Вас] полную стоимость установки потолка
+					p #[b Проконсультирую по интересующим вопросам.]#[br] Подскажу по выбору материала.#[br.d-lg-none] Как сделать уютную, светлую комату и при этом сэкономить
+					p У нас нету скрытых платежей.#[br] #[b Цена не поменяется#[br.d-lg-none] после окончания работы]
+		section.s9
+			.container 
+				.s9__ctn
+					+picture(jpg, `${assets}s9-i`, 'sm')(class="s9__man")
+					p.s9__title Выезд замерщика #[span бесплатно]
+					p.s9__subtitle Возможность рассчитать точную стоимость. И сразу подписать договор #[br.d-md-none]о начале работ
+					.s9__fwrap
+						a.s9__btn.uk-button.btn-yellow Вызвать замерщика
+						p.s9__agr #[=lang[50][0]]#[br.d-md-none] #[=lang[50][1]]
+		section.s10
+			.container 
+				.s10__ctn
+					h2.s10__title Нам доверяют
+					p.s10__subtitle 60 % клиентов обращаются к&nbsp;нам по рекомендации
+					+picture(png, `${assets}s10-i`, 'n')(class="s10__man")
+					.s10__bl 
+						p.s10__bl-name Григорий Яровой
+						p.s10__bl-descr Главный менеджер компании
+					.s10__items 
+						.s10__item.s10__item-1
+							img(src=`${assetsIco}helm.svg` alt="" data-uk-img)
+							p Стаж работы каждого специалиста больше 5 лет. Вы получите качественно установленный потолок
+						.s10__item.s10__item-2 
+							img(src=`${assetsIco}drill.svg` alt="" data-uk-img)
+							p Используем специализированные инструменты
+						.s10__item.s10__item-3
+							img(src=`${assetsIco}times.svg` alt="" data-uk-img)
+							p Установка в удобное для Вас время. Учитываем все пожелания
+						.s10__item.s10__item-4
+							img(src=`${assetsIco}flames.svg` alt="" data-uk-img)
+							p Полотна не токсичны и не горят. Прошли медицинскую и пожарную сертификацию
+						.s10__item.s10__item-5
+							img(src=`${assetsIco}contract.svg` alt="" data-uk-img)
+							p Работаем по договору с гарантией качества
+		section.s11
+			.s11__ibg.ibg
+				+picture(jpg, `${assets}s11-bg`, 'sml')
+			.container
+				h2.s11__title Профессиональная команда
+				.s11__slider
+					.uk-slider-container 
+						ul.s11__slider-items.uk-slider-items 
+							li.s11__slider-item 
+								.s11__slider-img.ibg 
+									+picture(jpg, `${assets}s11-i1`, 'n')
+								p.s11__slider-name Сергей
+								p.s11__slider-pos замерщик
+							li.s11__slider-item 
+								.s11__slider-img.ibg 
+									+picture(jpg, `${assets}s11-i2`, 'n')
+								p.s11__slider-name Ирина
+								p.s11__slider-pos заведующая
+							li.s11__slider-item 
+								.s11__slider-img.ibg 
+									+picture(jpg, `${assets}s11-i3`, 'n')
+								p.s11__slider-name Андрей
+								p.s11__slider-pos установщик
+					ul.s7__dots.d-md-none.uk-slider-nav.uk-dotnav.slidedots.slidedots--white
+								
+		section.s12 
+			.container 
+				h2=lang[44]
+				ul.s12__acc(data-uk-accordion)
+					li.s12__acc-item.s12__acc-item--first.uk-open 
+						a.s12__acc-title.uk-accordion-title(href="#") Полотно для потолка сделано из качественных материалов?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s12__acc-content.uk-accordion-content
+							p= lang[46]
+					li.s12__acc-item
+						a.s12__acc-title.uk-accordion-title(href="#") Почему нельзя сразу написать цену натяжного потолка?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s12__acc-content.uk-accordion-content
+							p= lang[46]
+					li.s12__acc-item
+						a.s12__acc-title.uk-accordion-title(href="#") Как долго устанавливаете натяжной потолок?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s12__acc-content.uk-accordion-content
+							p= lang[46]
+					li.s12__acc-item
+						a.s12__acc-title.uk-accordion-title(href="#") Много пыли во время установки?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s12__acc-content.uk-accordion-content
+							p= lang[46]
+					li.s12__acc-item.s12__acc-item--last
+						a.s12__acc-title.uk-accordion-title(href="#") Есть у вас светильники и люстры в наличии?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s12__acc-content.uk-accordion-content
+							p= lang[46]
+				.s12__manager.d-none.d-lg-flex 
+					+picture(jpg, `${assets}s11-man`, 'n')
+					p.s12__manager-name Евгений Романенко
+					p.s12__manager-pos= lang[17]
+					a.s12__manager-btn.uk-button.btn-solid-primary(href="#callback" data-uk-toggle)= lang[18]
+		section.s13 
+			.s13__ibg.ibg
+				+picture(jpg, `${assets}s13-bg`, 'ml', '')
+			.container 
+				.s13__map
+					.s13__map-downloading
+						.loadingio-spinner-rolling-hz3sd853mcv
+							.ldio-ekx347c8429
+								div
+					.s13__map-script
+
+
+

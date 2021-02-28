@@ -1,0 +1,18 @@
+@import "./widgets/header";
+@import "./widgets/footer";
+@import "./widgets/quiz";
+@import "./widgets/popup";
+@import "./widgets/popup-callback";
+@import "./widgets/popup-thanks";
+@import "./widgets/popup-rig";
+@import "./widgets/form";
+#v-about {
+    .popup {
+        &__body {
+            padding: 0;
+            iframe {
+                border-radius: 0.5rem;
+            }
+        }
+    }
+}
