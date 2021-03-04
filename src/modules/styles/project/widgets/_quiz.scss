@@ -19,6 +19,10 @@
         left: 0;
         top: 0;
         display: none;
+        #qfbg {
+            opacity: 0;
+            transition: $transition--fast;
+        }
     }
     &__img {
         &-dim {
@@ -231,6 +235,13 @@
         height: 3.375rem;
         padding-left: 3.14rem;
         font-size: 0.9375rem;
+        background: rgba(255, 255, 255, 0.5);
+        border-width: 0.0625rem;
+        border-style: solid;
+        border-color: #D8D8D8;
+        border-radius: 0.5rem;
+        box-shadow: 0px 0px 0.5rem 0.1875rem transparent;
+       
     }
     &__final {
         &-input {
@@ -256,20 +267,83 @@
             margin-right: auto;
         }
     }
+    &__thx {
+        padding-top: 3.125rem;
+        padding-left: 0.9375rem;
+        &-title {
+            font-family: Raleway;
+            font-weight: bold !important;
+            font-size: 1.75rem !important;
+            line-height: 2.0625rem;
+            margin-bottom: 0.9375rem;
+        }
+        &-subtitle {
+            font-family: Raleway;
+            font-weight: 500;
+            font-size: 1.3125rem;
+            line-height: 1.5625rem;
+            margin-bottom: 1.875rem;
+        }
+        &-big {
+            font-weight: 500;
+            font-size: 5.625rem;
+            line-height: 1em;
+            color: $primary;
+        }
+        &-small {
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: $primary;
+            margin-top: -0.625rem;
+            margin-bottom: 6.25rem;
+        }
+        &-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &-img {
+                width: 11.125rem;
+            }
+            &-title {
+                width: 11.125rem;
+                font-family: Montserrat;
+                font-size: 0.75rem;
+                text-align: center;
+                letter-spacing: 0.07em;
+                color: #6A6A6A;
+                position: relative;
+                margin-top: 1rem;
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 0.0625rem;
+                    background: #6A6A6A;
+                    opacity: 0.6;
+                    position: absolute;
+                    top: -0.25rem;
+                }
+            }
+        }
+    }
 }
 
 @media (min-width: map-get($grid-breakpoints, md)) {
     .quiz { 
         &__ibg {
             display: block;
+            z-index: -3;
+            @include center-item-x();
+            width: 100vw;
         }
-        &__main {}
+        &__main {
+            padding-bottom: 30px;
+        }
         &__subtitle {
             margin-bottom: 1.5rem;
             width: 25rem;
         }
         &__progress {
-            margin-bottom: 1rem;
             &-title {
                 font-size: 0.875rem;
                 margin-bottom: 0.5rem;
@@ -281,10 +355,10 @@
             }
         }
         &__btns {
-            width: 34.375rem;
+            width: 34.5rem;
             display: flex;
             justify-content: space-between;
-            margin-left: 3.75rem;
+            margin-left: 0;
             button {
                 width: 16.4375rem;
                 line-height: 4rem;
@@ -299,18 +373,25 @@
         &-slide {
             &-wrap {
                 // width: 100%;
-                min-height: unset;
-                height: 27rem;
+                min-height: 23.3rem;
             }
+            &:nth-child(4) {
+                .quiz__input {
+                    width: 330px;
+                    &-wrap {
+                        height: 65px;
+                    }
+                }
+            }
+            padding-left: 0.4rem;
             &-final {
                 
-                padding-left: 28.125rem;
             }
             &.quiz-active {}
             h3 {
-                width: 41.875rem;
-                font-size: 2.5rem;
+                font-size: 2.2rem;
                 text-align: left;
+                margin-bottom: 1.4rem;
             }
         }
         &__radio {
@@ -320,15 +401,16 @@
                 flex-wrap: wrap;
             }
             $self: &;
-            width: 22.6875rem;
-            height: 4rem;
-            line-height: 4rem;
+            width: 330px;
+            height: 65px;
+            line-height: 22px;
             padding-left: 1.375rem;
             cursor: pointer;
     
             margin-bottom: 1.0625rem;
             margin-right: 1.0625rem;
             &-toggler {
+                flex-shrink: 0;
                 width: 1.5625rem;
                 height: 1.5625rem;
                 margin-right: 1rem;
@@ -338,6 +420,7 @@
                 }
             }
             &-value {
+                font-size: 20px;
                 span {
                 }
             }
@@ -380,51 +463,86 @@
                     }
                 }
             }
-            width: 46.5rem;
+            width: 677px;
             height: 4rem;
-            padding-left: 5.9375rem;
+            padding-left: 4.1375rem;
             font-size: 1.25rem;
         }
         &__final {
-            &-title {
-                width: 26.875rem;
-                font-size: 2.5rem;
-                line-height: 1.05em;
-                text-align: left;
-                margin-top: 4rem;
-                margin-bottom: 1.25rem;
-            }
-            &-subtitle {
-                width: unset;
-                font-weight: normal;
-                font-size: 1.875rem;
-                text-align: left;
-                margin: 0 0 1.1875rem;
+            &-form {
+                width: 34.05rem;
+                margin-top: 5rem;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
             }
             &-input {
-                width: 19.5625rem;
+                padding-left: 0;
+                text-align: center;
+                width: 263px;
                 height: 4rem;
-                text-align: left;
-                font-size: 1.25rem;
-                margin-bottom: 1.875rem;
-                padding-left: 2.375rem;  
+                font-size: 18px;
+                margin-top: 0;
+                margin-bottom: 0;
             }
             &-submit {
                 line-height: 4rem;
-                font-size: 1.125rem;
-                width: 19.5625rem;
+                font-size: 18px;
+                width: 263px;
+                margin-left: 1rem;
+            }
+            &-agr {
+                width: 14.8125rem;
+                margin-top: 4px;
+                margin-left: auto;
+                margin-right: 8px;
+            }
+        }
+        
+        &__thx {
+            padding-top: 130px;
+            padding-left: 50px;
+            &-title {
+                // width: 360px;
+                font-size: 35px !important;
+                line-height: 2.0625rem !important;
+                margin-bottom: 10px !important;
+            }
+            &-subtitle {
+                margin-bottom: 1rem;
+            }
+            &-big {
+                font-size: 120px;
+                line-height: 1em;
+            }
+            &-small {
+                font-size: 25px;
+                margin-top: -0.625rem;
+                margin-bottom: 6.25rem;
+            }
+            &-logo {
+                position: absolute;
+                top: 54px;
+                left: 50px;
             }
         }
     }
     
 }
+
 @media (min-width: map-get($grid-breakpoints, lg)) {
     .quiz {
+        &__ibg {
+            width: 100%;
+        }
         &__img {
             
         }
         
         &__main {
+            padding-top: 45px;
+            padding-left: 90px;
+            padding-right: 85px;
             width: 920px;
             height: 545px;
             filter: drop-shadow(4.00505px 4.00505px 10.0126px rgba(78, 78, 78, 0.3));
@@ -467,17 +585,20 @@
             &-wrap {
                 // width: 100%;
                 min-height: unset;
-                height: 27rem;
+                height: 23.2rem;
+            }
+            &:nth-child(4) {
+                .quiz__input {
+                    width: 22.6875rem;
+                    &-wrap {
+                        height: 4rem;
+                    }
+                }
             }
             &-final {
-                
-                padding-left: 28.125rem;
             }
             &.quiz-active {}
             h3 {
-                width: 41.875rem;
-                font-size: 2.5rem;
-                text-align: left;
             }
         }
         &__radio {
@@ -489,7 +610,7 @@
             $self: &;
             width: 22.6875rem;
             height: 4rem;
-            line-height: 4rem;
+            line-height: 1.3rem;
             padding-left: 1.375rem;
             cursor: pointer;
     
@@ -549,37 +670,50 @@
             }
             width: 46.5rem;
             height: 4rem;
-            padding-left: 5.9375rem;
             font-size: 1.25rem;
         }
         &__final {
-            &-title {
-                width: 26.875rem;
-                font-size: 2.5rem;
-                line-height: 1.05em;
-                text-align: left;
-                margin-top: 4rem;
-                margin-bottom: 1.25rem;
-            }
-            &-subtitle {
-                width: unset;
-                font-weight: normal;
-                font-size: 1.875rem;
-                text-align: left;
-                margin: 0 0 1.1875rem;
+            &-form {
+                width: 34.05rem;
+                margin-top: 5rem;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
             }
             &-input {
-                width: 19.5625rem;
+                padding-left: 0;
+                text-align: center;
+                width: 263px;
                 height: 4rem;
-                text-align: left;
-                font-size: 1.25rem;
-                margin-bottom: 1.875rem;
-                padding-left: 2.375rem;  
+                font-size: 18px;
+                margin-top: 0;
+                margin-bottom: 0;
             }
             &-submit {
                 line-height: 4rem;
-                font-size: 1.125rem;
-                width: 19.5625rem;
+                font-size: 18px;
+                width: 263px;
+                margin-left: 1rem;
+            }
+            &-agr {
+                width: 14.8125rem;
+                margin-top: 4px;
+                margin-left: auto;
+                margin-right: 8px;
+            }
+        }
+        &__thx {
+            padding-top: 94px;
+            padding-left: 0;
+            &-title {
+                width: 360px;
+            }
+            &-subtitle {
+                margin-bottom: 60px;
+            }
+            &-logo {
+                top: 0;
+                left: 0px;
             }
         }
     }

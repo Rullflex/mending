@@ -8,9 +8,8 @@ document.addEventListener(`DOMContentLoaded`, function () {
     app.init()
 
     // FORM
-    const form = new Form()
-    form.init()
-    form.phoneMask('.quiz-slide .input-wrap')
+    const form = new Form(() => UIkit.modal(`#thanks`).show())
+    form.init('form:not([class="quiz__final-form"])')
     
 
     document.querySelector(`.header__drop-btn`).addEventListener('click', () => UIkit.dropdown(`.header__drop`).hide(0))
@@ -25,9 +24,15 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
 
     if (window.innerWidth < app.md) {
-
+        UIkit.slider(`.s9__team-wrap`, {
+            autoplay: true
+        })
     } else if (window.innerWidth >= app.md && window.innerWidth < app.lg) {
-
+        UIkit.slider(`.s9__team-wrap`, {
+            autoplay: false,
+            sets: true,
+            center: true
+        })
     } else if (window.innerWidth >= app.lg) {
 
     }
@@ -74,9 +79,9 @@ document.addEventListener(`DOMContentLoaded`, function () {
     }
 
 
-    UIkit.scrollspy(`.s13__map`)
-    document.querySelector(`.s13__map`).addEventListener(`inview`, (event) => {
-        document.querySelector(`.s13__map-script`).insertAdjacentHTML(`beforeend`, `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1542.5067930807736!2d32.06801302015278!3d49.44337410905408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d14b7c811c873d%3A0x6052c6a008731945!2z0YPQuy4g0KHQvNC10LvRj9C90YHQutCw0Y8sIDE1LCDQp9C10YDQutCw0YHRgdGLLCDQp9C10YDQutCw0YHRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwg0KPQutGA0LDQuNC90LAsIDE4MDAx!5e0!3m2!1sru!2sru!4v1612765520263!5m2!1sru!2sru" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`)
+    UIkit.scrollspy(`.s11__map`)
+    document.querySelector(`.s11__map`).addEventListener(`inview`, (event) => {
+        document.querySelector(`.s11__map-script`).insertAdjacentHTML(`beforeend`, `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1542.5067930807736!2d32.06801302015278!3d49.44337410905408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d14b7c811c873d%3A0x6052c6a008731945!2z0YPQuy4g0KHQvNC10LvRj9C90YHQutCw0Y8sIDE1LCDQp9C10YDQutCw0YHRgdGLLCDQp9C10YDQutCw0YHRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwg0KPQutGA0LDQuNC90LAsIDE4MDAx!5e0!3m2!1sru!2sru!4v1612765520263!5m2!1sru!2sru" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>`)
     })
 
 

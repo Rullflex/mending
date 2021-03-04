@@ -3,7 +3,7 @@
 	background: white;
     &__body {
         width: 20rem;
-        padding: 3.125rem 1.25rem;
+        padding: 2rem 0.625rem;
         margin-top: 0 !important;
     }
     &__close {
@@ -15,14 +15,23 @@
     }
     &__title {
         font-family: Raleway;
-        font-weight: bold;
+        font-weight: 800;
         font-size: 1.75rem;
         line-height: 1.05em;
         text-align: left;
-
-        margin-bottom: 0.3125rem;
+        margin-bottom: 0.5rem;
     }
-    &__subtitle {}
+    &__subtitle {
+        font-weight: 500;
+        font-size: 1.125rem;
+        line-height: 1.2em;
+    }
+    &__descr {
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 1.2em;
+        color: #7E7E7E;
+    }
 }
 @media (min-width: map-get($grid-breakpoints, md)) {
     .popup {
@@ -36,50 +45,40 @@
             margin-bottom: auto !important;
         }
         &__close {
-            right: -2rem;
-            top: -2rem;
+            right: 1rem;
+            top: 1rem;
             svg {
                 width: 1.5rem;
             }
         }
         &__title {
-            font-size: 2rem;
-            margin-bottom: 0.4rem;
         }
         &__subtitle {
-            font-weight: 500;
-            font-size: 1.25rem;
-            line-height: 1.05em;
-            margin-top: 0.6875rem;
-            margin-bottom: 2.375rem;
         }
     }
 }
 @media (min-width: map-get($grid-breakpoints, lg)) {
     .popup {
         &__body {
-            width: 61.6875rem;
-            padding: 3.125rem 2rem;//
-            border-radius: 0.6875rem;
-            overflow: hidden;
+            width: 923px;
+            height: 547px;
+            padding: 4.25rem 0 0 5.25rem;//
+            border-radius: 15px;
         }
         &__close {
-            right: 1rem;
-            top: 1rem;
-            svg {
-                width: 1.5rem;
-            }
             &:hover {
                 color: $primary;
             }
         }
         &__title {
-            // font-size: 2.5rem;
-            // margin-bottom: 0.3125rem;
+            font-weight: bold;
+            font-size: 32px;
         }
         &__subtitle {
-            margin-bottom: 1.5rem;
-            width: 25rem;
+        }
+        &__descr {
+            width: 475px;
+            font-size: 1rem;
         }
     }
 }

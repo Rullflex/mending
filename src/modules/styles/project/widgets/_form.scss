@@ -1,37 +1,39 @@
 .form {
     &__block {
-        &:first-child {
-            margin-top: 1rem;
-        }
         &:not(:last-child) {
-            margin-bottom: 0.5625rem;
+            margin-bottom: 0.6875rem;
         }
     }
     &__input {
-        padding-left: 1.1875rem;
-        height: 2.8125rem;
+        padding-left: 1.3125rem;
+        height: 3.4375rem;
         width: 100%;
+        border-radius: 10px;
     }
     
     &__submit {
         width: 100%;
-        height: 2.8125rem;
-        font-size: 0.875rem;
+        line-height: 3.75rem;
+        font-size: 1rem;
     }
     &__policy {
         font-size: 0.875rem;
-        line-height: 1.125rem;
+        line-height: 1.5em;
         text-align: center;
         color: $dark;
-        margin-top: 1rem;
+        margin-top: 0.25rem;
+        color: #A3A3A3;
         &-link {
-            color: $primary;
+            color: #2986F3;
         }
     }
 }
 @media (min-width: map-get($grid-breakpoints, md)) {}
 @media (min-width: map-get($grid-breakpoints, lg)) {
     .form {
+        width: 17.8125rem;
+        &__main {
+        }
         &__block {
             &:first-child {
                 margin-top: 1.25rem;
@@ -41,21 +43,16 @@
             }
         }
         &__input {
-            padding-left: 1.75rem;
-            width: 18.75rem;
+            padding-left: 1.125rem;
         }
         
         &__submit {
-            width: 18.75rem;
-            margin-top: 3rem;
+            margin-top: 0.6875rem;
         }
         &__policy {
-            font-size: 1.125rem;
-            line-height: 1.4375rem;
-            text-align: left;
-            margin-top: 1.125rem;
-            &-link {
-            }
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            &-link {}
         }
     }
 }

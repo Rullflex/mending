@@ -142,6 +142,17 @@ h2 {
                 border: 2px solid #FFFFFF;
             }
         }
+        &--green {
+            &>* {
+                &>* {
+                    background: white;
+                }
+            }
+            &>.uk-active>* {
+                background-color: #57C757;
+                border: 2px solid #FFFFFF;
+            }
+        }
         &--yellow {
             &>* {
                 &>* {

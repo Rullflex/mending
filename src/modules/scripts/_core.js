@@ -18,7 +18,7 @@ class App {
 
         this.lang = 'ru'
 
-        this._apiBase = '/';  
+        this._apiBase = 'https://hafizovtimur.ru/api/';  
     }
 
     init() {
@@ -100,7 +100,7 @@ class Quiz extends App {
         this.lastIndex = this.numberOfSlides - 1
         this.quiz = document.querySelector(this.selector)
 
-        this.FormHelper = new Form()
+        this.FormHelper = new Form(() => {this.toNextSlide()})
     }
 
     create () {
@@ -192,25 +192,25 @@ class Quiz extends App {
             })
         })
 
-
+        this.FormHelper.init('.quiz__final-form')
 
         // ВАЛИДАЦИЯ формы
-        this.quiz.querySelectorAll('.quiz-slide-final .input-wrap').forEach((el) => {
-            el.addEventListener("change", ev => {
-                const target = ev.target
-                const currentForm = target.closest('.quiz-slide')
-                const errors = validate(currentForm, this.FormHelper.formConstraints(currentForm)) || {}
-                this.FormHelper.showErrorsForInput(target, errors[target.name])
+        // this.quiz.querySelectorAll('.quiz-slide-final .input-wrap').forEach((el) => {
+        //     el.addEventListener("change", ev => {
+        //         const target = ev.target
+        //         const currentForm = target.closest('.quiz-slide')
+        //         const errors = validate(currentForm, this.FormHelper.formConstraints(currentForm)) || {}
+        //         this.FormHelper.showErrorsForInput(target, errors[target.name])
 
-                // this.quiz.querySelector(`.quiz-btn-next`).removeAttribute('disabled')
-                // this.quiz.querySelector(`.quiz-btn-next`).classList.remove('btn-solid-muted')
-            })
-            if (this.FormHelper.removeErrorOnFocus) {
-                el.addEventListener('focus', ev => {
-                    ev.target.closest(this.FormHelper.formInput).classList.remove(this.FormHelper.classHasError)
-                })
-            }
-        })
+        //         // this.quiz.querySelector(`.quiz-btn-next`).removeAttribute('disabled')
+        //         // this.quiz.querySelector(`.quiz-btn-next`).classList.remove('btn-solid-muted')
+        //     })
+        //     if (this.FormHelper.removeErrorOnFocus) {
+        //         el.addEventListener('focus', ev => {
+        //             ev.target.closest(this.FormHelper.formInput).classList.remove(this.FormHelper.classHasError)
+        //         })
+        //     }
+        // })
     }
 
     refreshValues() {
@@ -224,6 +224,7 @@ class Quiz extends App {
                 this.quiz.querySelector(`.quiz-slide-wrap`).style.cssText = `
                 height: ${this.quiz.querySelector(`.quiz-slide.${this.activeClass} .quiz-radio-wrap`).clientHeight + this.quiz.querySelector(`.quiz-slide.${this.activeClass} h3`).clientHeight + 30}px`
             }
+            
         } else {
             this.quiz.querySelectorAll(`.quiz-final-hide`).forEach(el => el.classList.add(`hidden`))
             this.quiz.querySelectorAll(`.quiz-final-show`).forEach(el => el.classList.remove(`hidden`))
@@ -235,6 +236,9 @@ class Quiz extends App {
         }
         if (this.currentSlide === this.lastIndex - 1) {
             this.refillFormValues()
+        } 
+        if (this.currentSlide === this.lastIndex) {
+            document.querySelector(`#qfbg`).style.cssText = 'opacity: 1'
         } 
 
         // btn mutation
@@ -282,7 +286,7 @@ class Quiz extends App {
         
     }
     refillFormValues() {
-        this.quiz.querySelector(`form .values`).innerHTML = ``
+        this.quiz.querySelector(`.quiz__final-form .values`).innerHTML = ``
         this.quiz.querySelectorAll(`.quiz-slide`).forEach((el, idx, arr) => {
             if (idx != arr.length - 1) {
                 let list = []
@@ -292,7 +296,7 @@ class Quiz extends App {
                 })
                 // el.querySelectorAll(`.quiz__input`).forEach(e => list.push(e.value))
                 // console.log(el.getAttribute(`data-title`), list.join(`, `))
-                this.quiz.querySelector(`form .values`).insertAdjacentHTML('beforeend', `<input type="hidden" name="${el.getAttribute(`data-title`)}" value="${list.join(`, `)}">`)
+                this.quiz.querySelector(`.quiz__final-form .values`).insertAdjacentHTML('beforeend', `<input type="hidden" name="${el.getAttribute(`data-title`)}" value="${list.join(`, `)}">`)
             }
         })
     }
@@ -305,7 +309,7 @@ class Quiz extends App {
 }
 
 class Form extends App {
-    constructor() {
+    constructor(onSuccess = () => {}) {
         super()
         this.selectorMessages = `.messages`,
         this.classHasError = `has-error`,
@@ -314,6 +318,7 @@ class Form extends App {
         this.disableIMask = false,
         this.disableMessages = true,
         this.removeErrorOnFocus = true,
+        this.onSuccess = onSuccess
         this.constraints = {
             email: {
               // Email is required
@@ -340,7 +345,7 @@ class Form extends App {
             },
             "Имя": {
               // You need to pick a username too
-              presence: true,
+              presence: false,
               // And it must be between 3 and 20 characters long
               length: {
                 minimum: 3,
@@ -535,7 +540,7 @@ class Form extends App {
         // } else {
         //     ym(71270149,'reachGoal','form')
         // }
-        UIkit.modal(`#thanks`).show();
+        this.onSuccess()
 
         fetch(`${this._apiBase}mail.php`, {
             method: 'post',

@@ -2,12 +2,12 @@
     $self: &;
     display: block;
 
-    background: rgba(255, 255, 255, 0.5);
+    background: #FFFFFF;
     border-width: 0.0625rem;
     border-style: solid;
-    border-color: #D8D8D8;
-    border-radius: 0.5rem;
-    box-shadow: 0px 0px 0.5rem 0.1875rem transparent;
+    border-color: #DFDFDF;
+    border-radius: 3.125rem;
+    // box-shadow: 0px 0px 0.5rem 0.1875rem transparent;
 
     transition: $transition--normal;
 
@@ -16,20 +16,20 @@
     &:focus {
         background: #FAFAFA;
         border-color: $primary;
-        box-shadow: 0px 0px 0.5rem 0.1875rem rgba($primary, 0.3);
+        // box-shadow: 0px 0px 0.5rem 0.1875rem rgba($primary, 0.3);
     }
     &-wrap {
         &.has-error {
             #{$self} {
                 border-color: $danger !important;
-                box-shadow: 0px 0px 0.5rem 0.1875rem rgba($danger, 0.3);
+                // box-shadow: 0px 0px 0.5rem 0.1875rem rgba($danger, 0.3);
                 color: $danger;
             }
         }
         &.has-success {
             #{$self} {
                 border-color: $primary !important;
-                box-shadow: 0px 0px 0.5rem 0.1875rem rgba($primary, 0.3);
+                // box-shadow: 0px 0px 0.5rem 0.1875rem rgba($primary, 0.3);
                 color: $primary;
             }
         }
