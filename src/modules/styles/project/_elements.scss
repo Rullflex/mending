@@ -57,8 +57,14 @@ h2 {
         color: #606060;
         
         &--expanded {
-            padding-left: 3.0625rem;
-            padding-right: 1.4rem;
+            @if $lang == 'ru' {
+                padding-left: 3.0625rem;
+                padding-right: 1.4rem;
+            }
+            @if $lang == 'ukr' {
+                padding-left: 2.8625rem;
+                padding-right: 0.9rem;
+            }
             width: 9.0625rem;
             height: 2.9375rem;
 

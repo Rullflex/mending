@@ -1,0 +1,388 @@
+extends modules/layout/_layout
+
+prepend head
+	title= lang.title
+	meta(name="description", content=lang.description)
+
+block content
+	main.main
+		section.s1
+			.ibg.s1__ibg
+				+picture(jpg, `${assets}s1-bg`, 'sml')
+			.container.s1__container
+				h1.s1__title #[span.text-primary Ремонт «Под Ключ»]#[br.d-lg-none] без срыва сроков с гарантией
+				.s1__benefit-price от 1000 грн м#[sup 2]
+				.s1__items
+					-
+						var list = [
+							'Бесплатный выезд Инженера-замерщика для составления сметы',
+							'Минимальные сроки без нарушения технологии работы',
+							'Поэтапная оплата<br> по договору'
+						]
+					each item, idx in list
+						.s1__item(class=`s1__item-${idx + 1}`)
+							img.s1__item-img(src=`${assets}s1-ico${idx + 1}.png` alt="")
+							.s1__item-txt!= item
+				.s1__block
+					p.s1__block-title.d-md-none Консультация#[br] по срокам и стоимости 
+					p.s1__block-title.d-none.d-md-block Консультация по стоимости и&nbsp;срокам проведения ремонта
+					a.uk-button.btn-yellow.s1__block-btn(href="#rig" data-uk-toggle="") Узнать стоимость ремонта
+					p.s1__block-subtitle Ответим на все вопросы#[br] Подскажем, как сэкономить до 15% на материалах#[br] Расскажем об этапах проведения ремонта
+
+				+picture-min(png, `${assets}s1-man`, `${assets}s1-man`, 'sml')(class="s1-img-man")
+				a.s1__play.play-video(href="#v-about" data-uk-toggle="")
+					+icon('playbtn')
+					.play-video__helper.play-video__helper--expanded= lang[9]
+
+		section.s2
+			.container.s2__container
+				.s2__items
+					.s2__item.s2__item-1
+						span 10 #[b лет]
+						br
+						p строим дома#[br] и делаем ремонт
+					.s2__item.s2__item-2
+						span 3500
+						br
+						p выполненных#[br] работ
+					.s2__item.s2__item-3
+						span #[b за] 2-3 #[b дня]
+						br
+						p косметический#[br] ремонт
+					.s2__item.s2__item-4
+						span 36
+						br
+						p профессионалов#[br] в штате
+				.s2__set
+					-
+						var list = [
+							'Косметический ремонт',
+							'Капитальный ремонт',
+							'Дизайнерский ремонт',
+							'Строительство',
+							'Ванные и санузлы',
+							'Балконы',
+						]
+					each item, idx in list
+						.s2__set-item(class=`s2__set-item-${idx + 1}`)
+							.s2__set-ibg.ibg 
+								+picture(jpg, `${assets}s2-i${idx + 1}`, 'n')
+								p.s2__set-title= item
+							
+		section.s3#quiz
+			.ibg.s3__ibg
+				+picture(jpg, `${assets}s3-bg`, 'n')
+			.container 
+				h2.s3__title Узнайте точный расчет ремонта, ответив на&nbsp;4 вопроса 
+				p.s3__subtitle.d-none.d-lg-block и получите -50% на химчистку и клининг
+				.s3__promise 
+					span.d-none.d-lg-block Пройдя тест, Вы  получите приятный подарок
+					+picture(pbg, `${assets}s3-ico`, 'n')
+					p.d-lg-none #[span.text-primary получите скидку 50%] на&nbsp;химчистку и клининг
+					p.d-none.d-lg-block Скидка на&nbsp;химчистку и&nbsp;клининг
+				.quiz__main 
+					.quiz__ibg.ibg
+						+picture(jpg, `${assets}s3-qbg`, 'ml')(class="quiz__img-bg")
+						+picture(jpg, `${modules}quiz-final-bg`, 'n')(id="qfbg")
+					.quiz-slide-wrap
+						.quiz-slide.quiz-active(data-title='Помещение')
+							h3 В каком помещении#[br] хотите сделать ремонт?
+							.quiz-radio-wrap.quiz__radio-wrap
+								+quiz-radio('Новостройка')
+								+quiz-radio('Вторичное жильё')(class="quiz-active")
+								+quiz-radio('Частный дом')
+								+quiz-radio('Коммерческое помещение')
+								.quiz__input-wrap.quiz-input-as-radio.input-wrap(data-value=``)
+									.quiz__radio-toggler
+										.quiz__radio-toggler--inner
+									input.quiz__input.input(type="text" name="Другое помещение" placeholder="У вас другое помещение? Напишите какое")
+						.quiz-slide(data-title='Какой ремонт')
+							h3 Какой ремонт хотите сделать?
+							.quiz-radio-wrap.quiz__radio-wrap
+								+quiz-radio('Косметический ремонт')
+								+quiz-radio('Хочу дизайнерский ремонт')
+								+quiz-radio('Капитальный ремонт')(class="quiz-active")
+								.quiz__input-wrap.quiz-input-as-radio.input-wrap(data-value=``)
+									.quiz__radio-toggler
+										.quiz__radio-toggler--inner
+									input.quiz__input.input(type="text" name="Свое пожелание" placeholder="Или напишите свои пожелания")
+						.quiz-slide(data-title='Площадь')
+							h3 Какой примерно площади помещения, в&nbsp;которых будет ремонт?
+							.quiz-radio-wrap.quiz__radio-wrap
+								+quiz-radio('0 - 10 м<sup>2</sup>', '0 - 10 м2')
+								+quiz-radio('10 - 30 м<sup>2</sup>', '10 - 30 м2')(class="quiz-active")
+								+quiz-radio('30 - 50 м<sup>2</sup>', '30 - 50 м2')
+								+quiz-radio('50 - 100 м<sup>2</sup>', '50 - 100 м2')
+								+quiz-radio('более 100 м<sup>2</sup>', 'больше 100 м2')
+								//- .quiz__input-wrap.quiz-input.input-wrap(data-value=``)
+								//- 	.quiz__radio-toggler
+								//- 		.quiz__radio-toggler--inner
+								//- 	input.quiz__input.input(type="text" name="Площадь" placeholder="Точная площадь комнаты")
+						.quiz-slide(data-title='Доп. услуги')
+							h3 Вам нужны дополнительные услуги?
+							p.quiz__subtitle Можно выбрать несколько вариантов
+							.quiz-radio-wrap.quiz__radio-wrap
+								+quiz-option('Перепланировка и согласование')(class="quiz__radio--sm")
+								+quiz-option('Инженерные проекты')(class="quiz__radio--sm")
+								+quiz-option('Приёмка квартиры от застройщика')(class="quiz__radio--sm quiz-active")
+								+quiz-option('Консультация с дизайнером')(class="quiz__radio--sm")
+								+quiz-option('Пока не знаю / не нужны')(class="quiz__radio--sm")
+								.quiz__input-wrap.quiz-input.input-wrap(data-value=``)
+									.quiz__radio-toggler
+										.quiz__radio-toggler--inner
+									input.quiz__input.input(type="text" name="Свой вариант" placeholder="Может что-то ещё? Мы поможем :)")
+						.quiz-slide.quiz-slide-final(data-title='Доп. услуги')
+							h3 Как вам удобно получить результат?
+							.quiz-radio-wrap.quiz__radio-wrap
+								+quiz-radio-final('Напишите мне в WhatsApp')(class="quiz__radio--lg")
+								+quiz-radio-final('Отправьте сообщение в Telegram')(class="quiz__radio--lg quiz-active")
+								+quiz-radio-final('Перезвоните по телефону')(class="quiz__radio--lg")
+								form.quiz__final-form(action="#")
+									.input-wrap
+										input.quiz__final-input.input(type="tel" name="Телефон" placeholder="Номер телефона")
+									button.quiz__final-submit.uk-button.btn-solid-primary(type="submit") Получить результат
+									p.quiz__final-agr Нажимая на кнопку, я соглашаюсь с политикой конфиденциальности
+									.values.d-none
+						.quiz-slide.quiz__thx
+							h3.quiz__thx-title Спасибо за ответы на вопросы
+							p.quiz__thx-subtitle Ваш бонус ожидет вас.
+							p.quiz__thx-big -50%
+							p.quiz__thx-small на химчистку и клининг
+							a.quiz__thx-logo(href="/")
+								img.quiz__thx-logo-img(src=`${modulesIco}logo-dark.svg` alt=companyName)
+								p.quiz__thx-logo-title Будiвництво та ремонт
+
+					+quiz-nav(4)
+		section.s4 
+			.container 
+				h2.s4__title Работаем #[span.text-primary  с 2010 года#[br] Более 3500 помещений] получили новый облик
+				.s4__slider(data-uk-slider)
+					.uk-slider-container 
+						ul.s4__slider-items.uk-slider-items 
+							- for(var i = 1; i <= 5; i++)
+								li.s4__slider-item 
+									.s4__slider-image.ibg 
+										+picture(jpg, `${assets}s4-i${i}`, 'sl')
+					nav.s4__slider-nav
+						a.s4__slider-prev(href="#" data-uk-slider-item="previous")
+						ul.slidedots.uk-slider-nav.uk-dotnav.d-lg-none
+						a.s4__slider-next(href="#" data-uk-slider-item="next")
+		section.s5
+			.s5__ibg.ibg
+				+picture(jpg, `${assets}s5-bg`, 'sml')
+			.container 
+				h2.s5__title Ремонт не сложный, но&nbsp;ответственный процесс
+				p.s5__subtitle многолетний опыт работы в&nbsp;нескольких слайдах
+				.s5__widget 
+					-
+						var list = [
+							{
+								title: 'Материалы',
+								set: [
+									'Подберём или посоветуем материалы, в качестве которых уверены.', 
+									'За 10 лет работы составили список материалов, качество которых действительно хорошее.',
+									'Не всегда качество соответствует заявленному производителем. Мы же это качество проверяем на практике. И готовы поделиться с Вами этим опытом.',
+									'Оградим Вас от перерасхода материала. Заложим в смету ровно столько, сколько требуется для ремонта.'
+								]
+							},
+							{
+								title: 'Перепланировка',
+								set: [
+									'— Можно ли сделать проём в несущей стене?', 
+									'— Можно! Только нужно соблюдать правила по укремлению проёма. И мы знаем как это правильно сделать и узаконить.',
+									'Из 3500 наших проектов 1200 прошли стадию перепланировки. В 95% случаях, мы знаем, как сделать для Вас удобное и рациональное пространство.'
+								]
+							},
+							{
+								title: 'Электрика',
+								set: [
+									'Сколько розеток и выключателей должно быть в доме? ', 
+									'Это определяем с вами на этапе создания проекта, когда планируем где будет стоять мебель и оборудование.',
+								]
+							},
+							{
+								title: 'Канализация<br> и водоснабжение',
+								set: [
+									'Канализационный стояк которого не слышно...?', 
+									'Да, такое бывает и мы можем это сделать.',
+								]
+							},
+							{
+								title: 'Строительные<br> и ремонтные работы',
+								set: [
+									'Как сэкономить на стяжке пола и возведении стен?<br> Знаем как действительно экономить на черновых этапах работы.', 
+									'Учитываем все технические нюансы материалов. Если штукатурке нужно высохнуть и набрать прочность в течении суток - значит она будет сохнуть в течение суток.',
+								]
+							}
+						]
+					.s5__slideshow
+						ul.s5__slideshow-items.uk-slideshow-items
+							each item, idx in list
+								li.s5__slideshow-item
+									.s5__slideshow-image.ibg 
+										+picture(jpg, `${assets}s5-i${idx + 1}`, 'sl')
+									if idx == 0
+										.s5__slideshow-title Знаем, какие материалы служат долго и надёжно
+									else
+										.s5__slideshow-title!= item.title
+									each point, pIdx in item.set
+										p(class=`${idx == 0 && pIdx == 0 ? 'first' : ''}${idx == 0 && pIdx == 1 ? 'second' : ''}`)!= point
+						ul.s5__dots.d-md-none.uk-slideshow-nav.uk-dotnav.slidedots
+					nav.s5__slideshow-nav.d-none.d-md-flex
+						each item, idx in list
+							a.s5__slideshow-navitem(href="#" class=`${idx == 0 ? 'active' : ''}`)
+								span(data-text=item.title)!= item.title
+		section.s6 
+			.container 
+				h2.s6__title Бесплатная консультация по стоимости и срокам
+				+picture(jpg, `${assets}s6-man`, 'n')(class=`s6__img-man`)
+				.s6__bl 
+					p.s6__bl-name Борис Васюченко
+					p.s6__bl-descr менеджер
+				.s6__bf Здравствуйте, я менеджер по работе с клиентами
+				.s6__txt 
+					p В мои обязанности входит #[b ответить#[br.d-none.d-lg-inline] на все Ваши вопросы.]
+					p Рассказать #[b из чего складывается стоимость] ремонта.
+					p #[b Рассчитать] ориентировочную #[b стоимость] и #[b сообщить сроки] реализации ремонта.
+		section.s7 
+			.s7__container.container 
+				.s7__ibg.ibg
+					+picture(jpg, `${assets}s7-bg`, 'sml')
+				h2.s7__title Проконсультироваться о&nbsp;стоимости и сроках проведения ремонта
+				p.s7__p Ответим на все вопросы
+				p.s7__p Подскажем, как сэкономить до 15% на материалах
+				p.s7__p Расскажем об этапах проведения ремонта
+				form.s7__form(action="#")
+					.input-wrap 
+						input.s7__input.input(type="tel" name="Телефон" placeholder="Введите номер телефона")
+					.s7__submit
+						button.s7__submit-btn.uk-button.btn-solid-primary(type="submit") Отправить
+						p.s7__submit-agr Нажимая на кнопку, я соглашаюсь с&nbsp;политикой конфиденциальности
+
+		section.s8
+			.container 
+				h2.s8__title Нам доверяют
+				p.s8__subtitle 60 % клиентов обращаются к&nbsp;нам по рекомендации
+				.s8__ctn
+					+picture(png, `${assets}s8-man`, 'n')(class="s8__man")
+					.s8__bl 
+						p.s8__bl-name Олег Громов
+						p.s8__bl-descr Главный прораб
+					.s8__items 
+						-
+							var list = [
+								'<b>Минимальные сроки работы.</b><br> За 10 лет мы разработали схему работы, которая позволяет укладываться в минимальные сроки без простоя и без нарушения технологии ремонта.',
+								'<b>Подскажем, как лучше обустроить планировки квартиры и дома.</b> Сделали более 3500 объектов — знаем о таких мелочах,<br class="d-none d-lg-inline"> о которых вы даже не догадываетесь.',
+								'<b>Пол в вашем доме будет идеально ровным.</b><br> Стены идеально вертикальные.<br> Ремонт такого уровня отрабатывался годами.',
+								'<b>Весь персонал с минимальным<br class="d-none d-md-inline d-lg-none"> 5-ти летнем стажем.</b><br> Они знают как выполнять даже самые сложные задачи.',
+								'<b>Работаем по договору<br class="d-md-none"> с гарантией качества.</b><br>Оплата происходит поэтапно.<br class="d-md-none"> Вы принимаете, оценивает<br>еи только после этого подписываете акт приёма работы.'
+							]
+						each item, idx in list
+							.s8__item(class=`s8__item-${idx + 1}`)
+								+picture(png, `${assets}s8-ico${idx + 1}`, 'n')
+								p!= item
+		section.s9
+			.ibg.s9__ibg
+				+picture(jpg, `${assets}s9-bg`, 'sml', '')
+			.container
+				h2.d-md-none.d-lg-block Доверьте Ваш ремонт профессионалам
+				h2.d-none.d-md-block.d-lg-none Профессиональная команда
+				.s9__team-wrap
+					- for(var x = 1; x <= 5; x++)
+						.s9__team-circle(class=`s9__team-circle-${x}`)
+					.uk-slider-container
+						ul.uk-slider-items.s9__team-items
+							-
+								var list = [
+									{
+										name: 'Наталья',
+										position: 'заведующая'
+									},
+									{
+										name: 'Михаил',
+										position: 'маляр'
+									},
+									{
+										name: 'Анастасия',
+										position: 'штукатур'
+									},
+									{
+										name: 'Анатолий',
+										position: 'электрик'
+									},
+									{
+										name: 'Олег',
+										position: 'прораб'
+									}
+								]
+							each item, idx in list
+								li.s9__team-item(class=`s9__team-item-${idx + 1}`)
+									.s9__team-img.ibg
+										+picture(jpg, `${assets}s9-person-i${idx + 1}`, 'n', '')
+									.s9__team-descr
+										p.s9__team-name= item.name
+										p.s9__team-pos!= item.position
+					+slider-dots()(class="slidedots--green d-lg-none")
+		section.s10 
+			.container 
+				h2=lang[44]
+				ul.s10__acc(data-uk-accordion)
+					li.s10__acc-item.s10__acc-item--first.uk-open 
+						a.s10__acc-title.uk-accordion-title(href="#") У вас есть разрешение на проведение строительных работ?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s10__acc-content.uk-accordion-content
+							p Да. Ремонтами и строительством мы успешно занимаемся уже больше 10 лет. Все необходимые юридические документы оформлены. 
+							h5 Сертификаты и разрешения
+							.s10__acc-content__certificates 
+								+picture(jpg, `${assets}s10-cert-i1`, 'n', 'n')(class="s10__acc-content__img")
+								+picture(jpg, `${assets}s10-cert-i2`, 'n', 'n')(class="s10__acc-content__img")
+								+picture(jpg, `${assets}s10-cert-i3`, 'n', 'n')(class="s10__acc-content__img")
+								+picture(jpg, `${assets}s10-cert-i4`, 'n', 'n')(class="s10__acc-content__img")
+					li.s10__acc-item
+						a.s10__acc-title.uk-accordion-title(href="#") Как долго происходит ремонт?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s10__acc-content.uk-accordion-content
+							p - Косметический ремонт от 2 недель
+							p - Капитальный ремонт от 2 месяцев
+							p - Дизайнерский ремонт от 2 месяцев
+							p - Строительство дома от 6 месяцев
+					li.s10__acc-item
+						a.s10__acc-title.uk-accordion-title(href="#") Кто занимается закупкой материалов?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s10__acc-content.uk-accordion-content
+							p Обычно этим занимаемся мы. На этапе составления сметы согласовываем с вами весь материал. Поедем с вами в магазин, посмотрим весь ассортимент. Подскажем, какие материалы лучше использовать.
+							p Для Вас мы закупаем весь материал со скидкой 15%. Потому что являемся оптовыми покупателями в строительных магазинах и имеем скидку. Через нас, Вы преобретаете материал по оптовым ценам. Таким образом помогаем экономить на материалах.
+							p Но вы так же можете самостоятельно закупить весь необходимый материал.
+					li.s10__acc-item
+						a.s10__acc-title.uk-accordion-title(href="#") Как быстро вы сможете начать ремонт?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s10__acc-content.uk-accordion-content
+							p Обычно, на замер помещения, составления и согласование сметы с материалами, уходит 3 - 5 дней. 
+							p Ремонт можем начать сразу после согласования сметы.
+					li.s10__acc-item
+						a.s10__acc-title.uk-accordion-title(href="#") Как происходит оплата?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s10__acc-content.uk-accordion-content
+							p Оплата по этапам.#[br] Во договоре мы разбиваем весь ремонт на этапы. Количество этапов зависят от характера работ.
+							p На каждом этапе вы принимаете и подписываете акт приёмки работ. Если Вас что-то не сутраивает - мы устраняем все дефекты или объясняем, почему нужно было сделать именно так.
+					li.s10__acc-item.s10__acc-item--last
+						a.s10__acc-title.uk-accordion-title(href="#") Ваша фирма так же строит дома?
+							+icon('angle-down', '#2B3034')(class="d-none d-md-block")
+						.s10__acc-content.uk-accordion-content
+							p Да. Строительством домов мы так же занимаемся уже 10 лет.
+				.s10__manager.d-none.d-lg-flex 
+					+picture(png, `${assets}s6-man`, 'n', 'n')
+					p.s10__manager-name Борис Васюченко
+					p.s10__manager-pos менеджер
+					a.s10__manager-btn.uk-button.btn-solid-primary(href="#consult" data-uk-toggle)= lang[18]
+		section.s11 
+			.container 
+				.s11__map
+					.s11__map-downloading
+						.loadingio-spinner-rolling-hz3sd853mcv
+							.ldio-ekx347c8429
+								div
+					.s11__map-script
+
+
+

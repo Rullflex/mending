@@ -26,7 +26,12 @@
         font-size: 1.1875rem;
         line-height: 1.24em;
         margin-top: 0.7rem;
-        margin-bottom: 1.1875rem;
+        @if $lang == 'ru' {
+            margin-bottom: 1.1875rem;
+        }
+        @if $lang == 'ukr' {
+            margin-bottom: 0.3875rem;
+        }
         .text-primary {
             font-weight: 900;
             font-size: 1.4rem;
@@ -43,7 +48,13 @@
         border-radius: 0.4375rem;
 
         font-weight: 600;
-        font-size: 1rem;
+        
+        @if $lang == 'ru' {
+            font-size: 1rem;
+        }
+        @if $lang == 'ukr' {
+            font-size: 0.8rem;
+        }
         color: #737373;
 
         margin-bottom: 0.3125rem;
@@ -123,7 +134,12 @@
     }
     &__play {
         position: absolute;
-        top: 18.6rem;
+        @if $lang == 'ru' {
+            top: 18.6rem;
+        }
+        @if $lang == 'ukr' {
+            top: 19.15rem;
+        }
         left: 0.7rem;
         z-index: 4;
     }
@@ -146,7 +162,12 @@
         &__container {}
         &__title {
             text-align: left;
-            font-size: 2.8125rem;
+            @if $lang == 'ru' {
+                font-size: 2.8125rem;
+            }
+            @if $lang == 'ukr' {
+                font-size: 2.3125rem;
+            }
             line-height: 1.4em;
             margin-top: 2.5rem;
             margin-bottom: 1.25rem;
@@ -232,10 +253,15 @@
                 margin-bottom: 1rem;
             }
             &-subtitle {
-                width: 18.1875rem;
                 font-size: 1.125rem;
                 line-height: 1.45em;
                 margin-bottom: 1.9375rem;
+                @if $lang == 'ru' {
+                    width: 18.1875rem;
+                }
+                @if $lang == 'ukr' {
+                    width: 18.0875rem;
+                }
             }
             &-btn {
                 order: 3;
@@ -267,7 +293,14 @@
         }
         &__container {}
         &__title {
-            width: 921px;
+            
+            @if $lang == 'ru' {
+                width: 921px;
+            }
+            @if $lang == 'ukr' {
+                width: 991px;
+            }
+            
             text-align: center;
             font-size: 3.4375rem;
             font-weight: 900;
@@ -323,7 +356,12 @@
             border-radius: 0.9375rem;
             margin: -8.8rem 11px 0px auto;
             &-title {
-                width: 32.8125rem;
+                @if $lang == 'ru' {
+                    width: 32.8125rem;
+                }
+                @if $lang == 'ukr' {
+                    width: 35.8125rem;
+                }
                 font-size: 2.125rem;
                 margin-bottom: 1.25rem;
             }
@@ -586,7 +624,12 @@
         padding-top: 0rem;
         padding-bottom: 10rem;
         &__title {
-            width: 20.9375rem;
+            @if $lang == 'ru' {
+                width: 20.9375rem;
+            }
+            @if $lang == 'ukr' {
+                width: 25.9375rem;
+            }
             font-size: 2.5rem;
             text-align: left;
             margin-bottom: 5.2rem;
@@ -603,13 +646,23 @@
             margin-bottom: 0;
             position: absolute;
             top: -11px;
-            right: 52px;
+            @if $lang == 'ru' {
+                right: 52px;
+            }
+            @if $lang == 'ukr' {
+                right: 18px;
+            }
             img {
                 width: 8.0625rem;
             }
             p {
                 text-align: center;
-                width: 12.5rem;
+                @if $lang == 'ru' {
+                    width: 12.5rem;
+                }
+                @if $lang == 'ukr' {
+                    width: 13.5rem;
+                }
                 font-family: Raleway;
                 font-size: 1.375rem;
                 margin-top: 0.9375rem;
@@ -624,7 +677,13 @@
         padding-top: 83px;
         padding-bottom: 4.75rem;
         &__title {
-            width: 45.9375rem;
+            
+            @if $lang == 'ru' {
+                width: 45.9375rem;
+            }
+            @if $lang == 'ukr' {
+                width: 48.9375rem;
+            }
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 0.6875rem;
@@ -1372,11 +1431,15 @@
             margin-bottom: 0.8rem;
         }
         &-agr {
-            width: 15.625rem;
             font-size: 0.9375rem;
             line-height: 1.11em;
             color: #838383;
-            
+            @if $lang == 'ru' {
+                width: 15.625rem;
+            }
+            @if $lang == 'ukr' {
+                width: 16.625rem;
+            }
         }
     }
 
@@ -2163,6 +2226,7 @@
         width: 100vw;
         height: 40.3125rem;
         &-downloading {
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
