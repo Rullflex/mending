@@ -16,9 +16,7 @@ class App {
         this.md = 768
         this.lg = 1280
 
-        this.lang = 'ukr'
-
-        this._apiBase = 'https://hafizovtimur.ru/api/';  
+        this._apiBase = '/api/'
     }
 
     init() {
@@ -100,7 +98,7 @@ class Quiz extends App {
         this.lastIndex = this.numberOfSlides - 1
         this.quiz = document.querySelector(this.selector)
 
-        this.FormHelper = new Form(() => {this.toNextSlide()})
+        this.FormHelper = new Form(() => {this.toNextSlide(); ym(72785254,'reachGoal','form')})
     }
 
     create () {
@@ -226,8 +224,8 @@ class Quiz extends App {
             }
             
         } else {
-            this.quiz.querySelectorAll(`.quiz-final-hide`).forEach(el => el.classList.add(`hidden`))
-            this.quiz.querySelectorAll(`.quiz-final-show`).forEach(el => el.classList.remove(`hidden`))
+            this.quiz.querySelectorAll(`.quiz-final-hide`).forEach(el => el.classList.add(`invisible`))
+            this.quiz.querySelectorAll(`.quiz-final-show`).forEach(el => el.classList.remove(`invisible`))
         }
         if (this.currentSlide === 0) {
             this.quiz.querySelector(`.quiz-btn-prev`).setAttribute('disabled', true)
@@ -433,17 +431,9 @@ class Form extends App {
 
     phoneMask(form) {
         let options = {
-            mask: `+7 (000) 000-00-00`,
-            startsWith: `7`,
+            mask: `+38\\0 00 000 0000`,
             lazy: false,
-            country: `Russia`
-        }
-        if (this.lang === `ukr`) {
-            options = {
-                mask: `+38\\0 00 000 0000`,
-                lazy: false,
-                country: `Ukraine`
-            }
+            country: `Ukraine`
         }
         let mask
         document.querySelectorAll(`${form} input[name=Телефон]`).forEach((e) => {

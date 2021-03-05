@@ -92,16 +92,16 @@ mixin quiz-option(text, value = null)
 mixin quiz-nav(count)
 	nav.quiz__nav.quiz-final-hide
 		.quiz__progress
-			.quiz__progress-title Крок #[span.quiz-progress-num 1] #[=lang[62][1]] #[= count]
+			.quiz__progress-title Шаг #[span.quiz-progress-num 1] #[=lang[62][1]] #[= count]
 			ul.quiz__progress-nav.quiz-progress-nav.uk-dotnav.slidedots.slidedots
 				- for(var i = 1; i <= count; i++)
 					li(class=`${i == 1 ? 'uk-active' : ''}`)
 						a
 		.quiz__btns
 			button.quiz-btn-prev.uk-button.btn-outline-primary.d-none.d-md-flex
-				span Попередній крок
+				span Предыдущий шаг
 			button.quiz-btn-next.uk-button.btn-solid-primary
-				span Наступний крок
+				span Следующий шаг
 
 mixin quiz-slide-first(idx)
 	.quiz-slide.quiz-slide--first(data-title=lang[13])
@@ -124,11 +124,11 @@ mixin quiz-slide-dimentions()
 mixin quiz-slide-final()
 	.quiz-slide.quiz-slide-final&attributes(attributes)
 		form(action="#")
-			p.quiz__final-title Вкажіть номер телефону для зв'язку
+			p.quiz__final-title Укажите номер телефона для связи
 			p.quiz__final-subtitle!= lang[68]
 			.input-wrap
-				input.quiz__final-input.input(type="tel" name="Телефон" placeholder="Введіть номер телефону")
-			button.quiz__final-submit.uk-button.btn-solid-primary(type="submit") Відправити
+				input.quiz__final-input.input(type="tel" name="Телефон" placeholder="Введите номер телефона")
+			button.quiz__final-submit.uk-button.btn-solid-primary(type="submit") Отправить
 			+picture(jpg, `${modules}popup-tel`, 'n', 'n')(class="quiz__img-tel")
 			.values.d-none
 
@@ -219,7 +219,7 @@ mixin icon(icon, filler = primary)
 		when 'flag-ru'
 			svg(width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none")
 				path(d="M8.49041 14.9565C12.6355 14.9565 16.0395 11.785 16.0395 7.82051C16.0395 3.85603 12.6355 0.684523 8.49041 0.684523C4.34527 0.684523 0.941359 3.85603 0.941359 7.82051C0.941359 11.785 4.34527 14.9565 8.49041 14.9565Z" fill="#C4C4C4" stroke="#DDDDDD" stroke-width="0.843844")
-				mask(id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="15" height="14")
+				mask(id="mask0" maskUnits="userSpaceOnUse" x="1" y="1" width="15" height="14")
 					ellipse(cx="8.49041" cy="7.82051" rx="7.12713" ry="6.71406" fill="#C4C4C4")
 				g(mask="url(#mask0)")
 					rect(x="1.36328" y="0.201172" width="20.0524" height="4.77778" fill="white")
@@ -230,9 +230,9 @@ mixin icon(icon, filler = primary)
 			svg(width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none")
 				g(opacity="0.5")
 					path(d="M8.65098 14.9565C12.741 14.9565 16.0886 11.7789 16.0886 7.82051C16.0886 3.86213 12.741 0.684523 8.65098 0.684523C4.56095 0.684523 1.21333 3.86213 1.21333 7.82051C1.21333 11.7789 4.56095 14.9565 8.65098 14.9565Z" fill="#C4C4C4" stroke="#DDDDDD" stroke-width="0.843844")
-					mask(id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="15" height="14")
+					mask(id="mask1" maskUnits="userSpaceOnUse" x="1" y="1" width="15" height="14")
 						ellipse(cx="8.65098" cy="7.82051" rx="7.01573" ry="6.71406" fill="#C4C4C4")
-					g(mask="url(#mask0)")
+					g(mask="url(#mask1)")
 						rect(x="-0.983398" y="-1.27051" width="19.739" height="9.46774" fill="#1AA0EB")
 						rect(x="-0.98291" y="8.19727" width="19.739" height="9.46774" fill="#FDED01")
 		when 'gift'

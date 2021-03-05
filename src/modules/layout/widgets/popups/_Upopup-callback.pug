@@ -1,20 +1,20 @@
 +popup()#callback
-	h3.popup__title Ответим на#[br.d-md-none] любой вопрос
+	h3.popup__title Відповімо на #[br.d-md-none] будь-яке питання
 	form.form(action="#")
 		.form__main
 			.form__block.input-wrap
 				input.form__input.input(type="text" name="Имя" placeholder=lang.urName)
 			.form__block.input-wrap
 				input.form__input.input(type="tel" name="Телефон" placeholder=lang.urTel)
-			button.form__submit.uk-button.btn-solid-primary(type="submit") Отправить
-		.form__policy Нажимая на кнопку, я соглашаюсь#[br] с #[a.form__policy-link(href=privacyLink target="_blank") политикой конфиденциальности]
+			button.form__submit.uk-button.btn-solid-primary(type="submit") Відправити
+		.form__policy Натискаючи на кнопку, я погоджуюся#[br] з #[a.form__policy-link(href=privacyLink target="_blank") політикою конфіденційності]
 	.phone 
 		+picture(png, `${modules}phone`, 'n')(class="phone-img")
 		.phone-cb 
-			p Позвоните нам:
+			p Зателефонуйте нам
 			a.phone-tel.link(href=phoneLink)!= phoneNumber
 	.mes 
-		p Написать нам в мессенджере
+		p Написати нам в месенджері
 		.mes-icons 
 			a.mes-icon(href=waLink)
 				+icon('social-wa')

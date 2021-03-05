@@ -7,8 +7,15 @@ document.addEventListener(`DOMContentLoaded`, function () {
     const app = new App()
     app.init()
 
+    document.querySelectorAll(`a[href="tel:+380932111826"]`).forEach(el => {
+        el.addEventListener('click', () => ym(72785254,'reachGoal','call'))
+    })
+
     // FORM
-    const form = new Form(() => UIkit.modal(`#thanks`).show())
+    const form = new Form(() => {
+        UIkit.modal(`#thanks`).show()
+        ym(72785254,'reachGoal','form')
+    })
     form.init('form:not([class="quiz__final-form"])')
     
 
@@ -21,6 +28,17 @@ document.addEventListener(`DOMContentLoaded`, function () {
     })
     quiz.create()
     
+    document.querySelectorAll(`.quiz__input`).forEach( (elem, idx) => {
+        elem.addEventListener('focus', () =>  elem.closest(`.quiz__input-wrap`).classList.add('focused'))
+        elem.addEventListener('focusout', () => {
+            elem.closest(`.quiz__input-wrap`).classList.remove('focused')
+            if (elem.value != '') {
+                elem.closest(`.quiz__input-wrap`).classList.add('notnull')
+            } else {
+                elem.closest(`.quiz__input-wrap`).classList.remove('notnull')
+            }
+        })
+    })
 
 
     if (window.innerWidth < app.md) {

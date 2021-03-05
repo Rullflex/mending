@@ -147,7 +147,7 @@
         $self: &;
         width: 100%;
         height: 3.375rem;
-        padding-left: 0.9rem;
+        padding-left: 1rem;
         display: flex;
         align-items: center;
 
@@ -162,6 +162,7 @@
         &-toggler {
             display: flex;
             justify-content: center;
+            flex-shrink: 0;
             align-items: center;
             width: 1.3125rem;
             height: 1.3125rem;
@@ -171,7 +172,7 @@
             border-color: transparent;
             border-radius: 50%;
             box-shadow: 0px 1px 3px 1px rgba($primary, 0);
-            margin-right: 0.875rem;
+            margin-right: 0.9rem;
             &--inner {
                 width: 0.8125rem;
                 height: 0.8125rem;
@@ -182,6 +183,7 @@
             }
         }
         &-value {
+            line-height: 1.2em;
             font-size: 1rem;
             span {
                 color: #A3A3A3;
@@ -211,8 +213,42 @@
         &-wrap {
             position: relative;
             .quiz__radio-toggler {
+                pointer-events: none;
+                user-select: none;
                 @include center-item-y();
-                left: 0.9rem;
+                left: 1rem;
+            }
+            &::before {
+                content: '';
+                display: block;
+                width: 3.3375rem;
+                height: 100%;
+
+                border-right-width: 0.0625rem;
+                border-right-style: solid;
+                border-right-color: #CFCFCF;
+                transition: $transition--normal;
+
+                position: absolute;
+                top: 0;
+                left: 0;
+                pointer-events: none;
+                user-select: none;
+            }
+            &::after {
+                content: attr(data-placeholder);
+                line-height: 1.1em;
+                font-size: inherit;
+                color: #A3A3A3;
+                left: 4.75rem;
+                @include center-item-y();
+                pointer-events: none;
+                user-select: none;
+            }
+            &.focused, &.notnull {
+                &::after {
+                    content: none;
+                }
             }
             &.quiz-active {
                 .quiz__input {
@@ -229,11 +265,14 @@
                     background: $primary;
                     box-shadow: 0px 1px 3px 1px rgba($primary, 0.3);
                 }
+                &::before {
+                    border-right-color: $primary;
+                }
             }
         }
         width: 100%;
         height: 3.375rem;
-        padding-left: 3.14rem;
+        padding-left: 4.75rem;
         font-size: 0.9375rem;
         background: rgba(255, 255, 255, 0.5);
         border-width: 0.0625rem;
@@ -241,9 +280,11 @@
         border-color: #D8D8D8;
         border-radius: 0.5rem;
         box-shadow: 0px 0px 0.5rem 0.1875rem transparent;
-       
     }
     &__final {
+        &-icons {
+            display: none;
+        }
         &-input {
             padding-left: 4.5rem;
             width: 100%;
@@ -375,12 +416,25 @@
                 // width: 100%;
                 min-height: 23.3rem;
             }
+            &:nth-child(2) {
+                .quiz__input {
+                    width: 330px;
+                    &-wrap {
+                        height: 65px;
+                    }
+                }
+            }
             &:nth-child(4) {
                 .quiz__input {
                     width: 330px;
                     &-wrap {
                         height: 65px;
                     }
+                }
+            }
+            &:nth-child(5) {
+                .quiz__radio {
+                    width: 448px;
                 }
             }
             padding-left: 0.4rem;
@@ -420,7 +474,7 @@
                 }
             }
             &-value {
-                font-size: 20px;
+                font-size: 19px;
                 span {
                 }
             }
@@ -444,6 +498,13 @@
         }
         &__input {
             &-wrap {
+                &::before {
+                    width: 65px;
+                }
+                &::after {
+                    font-size: 19px;
+                    left: 80px;
+                }
                 .quiz__radio-toggler {
                     left: 1.4rem;
                 }
@@ -465,13 +526,23 @@
             }
             width: 677px;
             height: 4rem;
-            padding-left: 4.1375rem;
-            font-size: 1.25rem;
+            padding-left: 80px;
+            font-size: 19px;
         }
         &__final {
+            &-icons {
+                display: block;
+                position: absolute;
+                top: 67px;
+                left: 449px;
+                z-index: -1;
+            }
+            &-icon {
+                margin-bottom: 41px;
+            }
             &-form {
                 width: 34.05rem;
-                margin-top: 5rem;
+                margin-top: 2rem;
                 display: flex;
                 align-items: center;
                 flex-wrap: wrap;
@@ -557,6 +628,7 @@
         &__subtitle {
             margin-bottom: 1.5rem;
             width: 25rem;
+            font-size: 18px;
         }
         &__progress {
             margin-bottom: 1rem;
@@ -591,6 +663,14 @@
                 // width: 100%;
                 min-height: unset;
                 height: 23.2rem;
+            }
+            &:nth-child(2) {
+                .quiz__input {
+                    width: 22.6875rem;
+                    &-wrap {
+                        height: 4rem;
+                    }
+                }
             }
             &:nth-child(4) {
                 .quiz__input {
@@ -678,9 +758,12 @@
             font-size: 1.25rem;
         }
         &__final {
+            &-icons {
+                top: 107px;
+            }
             &-form {
-                width: 34.05rem;
-                margin-top: 5rem;
+                width: 100%;
+                margin-top: 1rem;
                 display: flex;
                 align-items: center;
                 flex-wrap: wrap;
@@ -705,6 +788,11 @@
                 margin-top: 4px;
                 margin-left: auto;
                 margin-right: 8px;
+                a {
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
             }
         }
         &__thx {
