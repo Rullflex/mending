@@ -16,9 +16,9 @@
 	.mes 
 		p Написати нам в месенджері
 		.mes-icons 
-			a.mes-icon(href=waLink)
-				+icon('social-wa')
-			a.mes-icon(href=tgLink)
-				+icon('social-tg')
+			a.mes-icon(href=waLink target="_blank")
+				img(src=`${modulesIco}social-wa.svg` alt="" data-uk-img)
+			//- a.mes-icon(href=tgLink)
+			//- 	+icon('social-tg')
 			a.mes-icon(href=telLink)
-				+icon('social-tel')
+				img(src=`${modulesIco}social-tel.svg` alt="" data-uk-img)

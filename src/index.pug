@@ -3,6 +3,7 @@ extends modules/layout/_layout
 prepend head
 	title= lang.title
 	meta(name="description", content=lang.description)
+	meta(name="keywords", content=lang.keywords)
 
 block content
 	main.main
@@ -242,7 +243,7 @@ block content
 		section.s6 
 			.container 
 				h2.s6__title Бесплатная консультация по стоимости и срокам
-				+picture(jpg, `${assets}s6-man`, 'n')(class=`s6__img-man`)
+				+picture(png, `${assets}s6-man`, 'n')(class=`s6__img-man`)
 				.s6__bl 
 					p.s6__bl-name Борис Васюченко
 					p.s6__bl-descr менеджер

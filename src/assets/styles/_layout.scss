@@ -295,10 +295,10 @@
         &__title {
             
             @if $lang == 'ru' {
-                width: 1000px;
+                width: 991px;
             }
             @if $lang == 'ukr' {
-                width: 991px;
+                width: 1010px;
             }
             
             text-align: center;

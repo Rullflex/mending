@@ -105,7 +105,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
 
     UIkit.scrollspy(`#v-about`)
     document.querySelector(`#v-about`).addEventListener(`inview`, (event) => {
-        document.querySelector(`#v-about .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/lpGr5OuS4mg" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
+        document.querySelector(`#v-about .popup__body`).insertAdjacentHTML(`beforeend`, `<iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/grdFuQBC5jo" frameborder="0" allowfullscreen="true" data-uk-video data-uk-responsive"></iframe>`)
     })
     
 
